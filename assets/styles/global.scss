@@ -1,0 +1,16 @@
+* {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    font-family: Playpen Sans, 'sans serif';
+}
+
+.grid {
+    display: grid;
+    gap: 1.8rem;
+}
+
+.main {
+    margin: 4rem auto;
+    width: 100%;
+}
