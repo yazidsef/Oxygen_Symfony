@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CourseRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Discipline;
@@ -45,6 +47,17 @@ class Course
 
     #[ORM\Column(length: 255)]
     private ?string $urlImage = null;
+
+    #[ORM\OneToMany(mappedBy: 'course', targetEntity: Student::class)]
+    private Collection $students;
+
+    #[ORM\OneToOne(mappedBy: 'course', cascade: ['persist', 'remove'])]
+    private ?Applications $applications = null;
+
+    public function __construct()
+    {
+        $this->students = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -167,6 +180,53 @@ class Course
     public function setUrlImage(string $urlImage): static
     {
         $this->urlImage = $urlImage;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Student>
+     */
+    public function getStudents(): Collection
+    {
+        return $this->students;
+    }
+
+    public function addStudent(Student $student): static
+    {
+        if (!$this->students->contains($student)) {
+            $this->students->add($student);
+            $student->setCourse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStudent(Student $student): static
+    {
+        if ($this->students->removeElement($student)) {
+            // set the owning side to null (unless already changed)
+            if ($student->getCourse() === $this) {
+                $student->setCourse(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getApplications(): ?Applications
+    {
+        return $this->applications;
+    }
+
+    public function setApplications(Applications $applications): static
+    {
+        // set the owning side of the relation if necessary
+        if ($applications->getCourse() !== $this) {
+            $applications->setCourse($this);
+        }
+
+        $this->applications = $applications;
 
         return $this;
     }
