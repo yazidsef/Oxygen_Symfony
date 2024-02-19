@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CourseRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Discipline;
 
 #[ORM\Entity(repositoryClass: CourseRepository::class)]
 class Course
@@ -16,7 +17,7 @@ class Course
 
     #[ORM\ManyToOne(inversedBy: 'courses')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?discipline $discipline = null;
+    private ?Discipline $discipline = null;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
@@ -50,7 +51,7 @@ class Course
         return $this->id;
     }
 
-    public function getDiscipline(): ?discipline
+    public function getDiscipline(): ?Discipline
     {
         return $this->discipline;
     }
