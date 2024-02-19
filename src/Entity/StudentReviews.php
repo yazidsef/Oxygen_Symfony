@@ -13,9 +13,9 @@ class StudentReviews
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'studentReviews', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?student $sudent = null;
+    private ?Student $student = null;
 
     #[ORM\Column(length: 255)]
     private ?string $testimonial = null;
@@ -25,14 +25,14 @@ class StudentReviews
         return $this->id;
     }
 
-    public function getSudent(): ?student
+    public function getStudent(): ?Student
     {
-        return $this->sudent;
+        return $this->student;
     }
 
-    public function setSudent(student $sudent): static
+    public function setStudent(Student $student): static
     {
-        $this->sudent = $sudent;
+        $this->student = $student;
 
         return $this;
     }

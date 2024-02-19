@@ -15,12 +15,12 @@ class Applications
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToMany(mappedBy: 'applications', targetEntity: student::class)]
+    #[ORM\OneToMany(mappedBy: 'applications', targetEntity: Student::class)]
     private Collection $student;
 
     #[ORM\OneToOne(inversedBy: 'applications', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?course $course = null;
+    private ?Course $course = null;
 
     #[ORM\Column(length: 255)]
     private ?string $status = null;
@@ -36,14 +36,14 @@ class Applications
     }
 
     /**
-     * @return Collection<int, student>
+     * @return Collection<int, Student>
      */
     public function getStudent(): Collection
     {
         return $this->student;
     }
 
-    public function addStudent(student $student): static
+    public function addStudent(Student $student): static
     {
         if (!$this->student->contains($student)) {
             $this->student->add($student);
@@ -53,7 +53,7 @@ class Applications
         return $this;
     }
 
-    public function removeStudent(student $student): static
+    public function removeStudent(Student $student): static
     {
         if ($this->student->removeElement($student)) {
             // set the owning side to null (unless already changed)
@@ -65,12 +65,12 @@ class Applications
         return $this;
     }
 
-    public function getCourse(): ?course
+    public function getCourse(): ?Course
     {
         return $this->course;
     }
 
-    public function setCourse(course $course): static
+    public function setCourse(Course $course): static
     {
         $this->course = $course;
 

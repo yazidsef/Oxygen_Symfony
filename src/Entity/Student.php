@@ -18,7 +18,7 @@ class Student
 
     #[ORM\ManyToOne(inversedBy: 'students')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?course $course = null;
+    private ?Course $course = null;
 
     #[ORM\Column(length: 150)]
     private ?string $firstName = null;
@@ -51,6 +51,9 @@ class Student
     #[ORM\JoinColumn(nullable: false)]
     private ?Applications $applications = null;
 
+    #[ORM\OneToOne(mappedBy: 'student', cascade: ['persist', 'remove'])]
+    private ?StudentReviews $studentReviews = null;
+
     public function __construct()
     {
         $this->newMessages = new ArrayCollection();
@@ -61,12 +64,12 @@ class Student
         return $this->id;
     }
 
-    public function getCourse(): ?course
+    public function getCourse(): ?Course
     {
         return $this->course;
     }
 
-    public function setCourse(?course $course): static
+    public function setCourse(?Course $course): static
     {
         $this->course = $course;
 
@@ -207,6 +210,23 @@ class Student
     public function setApplications(?Applications $applications): static
     {
         $this->applications = $applications;
+
+        return $this;
+    }
+
+    public function getStudentReviews(): ?StudentReviews
+    {
+        return $this->studentReviews;
+    }
+
+    public function setStudentReviews(StudentReviews $studentReviews): static
+    {
+        // set the owning side of the relation if necessary
+        if ($studentReviews->getStudent() !== $this) {
+            $studentReviews->setStudent($this);
+        }
+
+        $this->studentReviews = $studentReviews;
 
         return $this;
     }

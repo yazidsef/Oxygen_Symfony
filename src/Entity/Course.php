@@ -47,13 +47,10 @@ class Course
 
     #[ORM\Column(length: 255)]
     private ?string $urlImage = null;
-
     #[ORM\OneToMany(mappedBy: 'course', targetEntity: Student::class)]
     private Collection $students;
-
     #[ORM\OneToOne(mappedBy: 'course', cascade: ['persist', 'remove'])]
     private ?Applications $applications = null;
-
     public function __construct()
     {
         $this->students = new ArrayCollection();
@@ -205,7 +202,7 @@ class Course
     public function removeStudent(Student $student): static
     {
         if ($this->students->removeElement($student)) {
-            // set the owning side to null (unless already changed)
+// set the owning side to null (unless already changed)
             if ($student->getCourse() === $this) {
                 $student->setCourse(null);
             }
@@ -227,7 +224,6 @@ class Course
         }
 
         $this->applications = $applications;
-
         return $this;
     }
 }

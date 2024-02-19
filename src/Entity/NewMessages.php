@@ -16,7 +16,7 @@ class NewMessages
 
     #[ORM\ManyToOne(inversedBy: 'newMessages')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?student $student = null;
+    private ?Student $student = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
@@ -26,12 +26,12 @@ class NewMessages
         return $this->id;
     }
 
-    public function getStudent(): ?student
+    public function getStudent(): ?Student
     {
         return $this->student;
     }
 
-    public function setStudent(?student $student): static
+    public function setStudent(?Student $student): static
     {
         $this->student = $student;
 
