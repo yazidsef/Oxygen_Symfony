@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\Discipline;
 
 #[ORM\Entity(repositoryClass: CourseRepository::class)]
 class Course
@@ -47,13 +46,13 @@ class Course
 
     #[ORM\Column(length: 255)]
     private ?string $urlImage = null;
-    #[ORM\OneToMany(mappedBy: 'course', targetEntity: Student::class)]
-    private Collection $students;
-    #[ORM\OneToOne(mappedBy: 'course', cascade: ['persist', 'remove'])]
-    private ?Applications $applications = null;
+
+    #[ORM\OneToMany(mappedBy: 'course', targetEntity: Application::class)]
+    private Collection $application;
+
     public function __construct()
     {
-        $this->students = new ArrayCollection();
+        $this->application = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -66,7 +65,7 @@ class Course
         return $this->discipline;
     }
 
-    public function setDiscipline(?discipline $discipline): static
+    public function setDiscipline(?Discipline $discipline): static
     {
         $this->discipline = $discipline;
 
@@ -182,48 +181,32 @@ class Course
     }
 
     /**
-     * @return Collection<int, Student>
+     * @return Collection<int, Application>
      */
-    public function getStudents(): Collection
+    public function getApplication(): Collection
     {
-        return $this->students;
+        return $this->application;
     }
 
-    public function addStudent(Student $student): static
+    public function addApplication(Application $application): static
     {
-        if (!$this->students->contains($student)) {
-            $this->students->add($student);
-            $student->setCourse($this);
+        if (!$this->application->contains($application)) {
+            $this->application->add($application);
+            $application->setCourse($this);
         }
 
         return $this;
     }
 
-    public function removeStudent(Student $student): static
+    public function removeApplication(Application $application): static
     {
-        if ($this->students->removeElement($student)) {
-// set the owning side to null (unless already changed)
-            if ($student->getCourse() === $this) {
-                $student->setCourse(null);
+        if ($this->application->removeElement($application)) {
+            // set the owning side to null (unless already changed)
+            if ($application->getCourse() === $this) {
+                $application->setCourse(null);
             }
         }
 
-        return $this;
-    }
-
-    public function getApplications(): ?Applications
-    {
-        return $this->applications;
-    }
-
-    public function setApplications(Applications $applications): static
-    {
-        // set the owning side of the relation if necessary
-        if ($applications->getCourse() !== $this) {
-            $applications->setCourse($this);
-        }
-
-        $this->applications = $applications;
         return $this;
     }
 }

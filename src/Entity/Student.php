@@ -16,11 +16,7 @@ class Student
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'students')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Course $course = null;
-
-    #[ORM\Column(length: 150)]
+    #[ORM\Column(length: 255)]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 150)]
@@ -35,45 +31,33 @@ class Student
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $birthday = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $adress = null;
+    #[ORM\Column(length: 200)]
+    private ?string $address = null;
 
     #[ORM\Column(length: 255)]
     private ?string $avatarImage = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 150)]
     private ?string $formation = null;
 
-    #[ORM\OneToMany(mappedBy: 'student', targetEntity: NewMessages::class)]
+    #[ORM\OneToMany(mappedBy: 'student', targetEntity: NewMessage::class)]
     private Collection $newMessages;
 
-    #[ORM\ManyToOne(inversedBy: 'student')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Applications $applications = null;
-
     #[ORM\OneToOne(mappedBy: 'student', cascade: ['persist', 'remove'])]
-    private ?StudentReviews $studentReviews = null;
+    private ?StudentReview $studentReview = null;
+
+    #[ORM\ManyToMany(targetEntity: Application::class, mappedBy: 'student')]
+    private Collection $applications;
 
     public function __construct()
     {
         $this->newMessages = new ArrayCollection();
+        $this->applications = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCourse(): ?Course
-    {
-        return $this->course;
-    }
-
-    public function setCourse(?Course $course): static
-    {
-        $this->course = $course;
-
-        return $this;
     }
 
     public function getFirstName(): ?string
@@ -136,14 +120,14 @@ class Student
         return $this;
     }
 
-    public function getAdress(): ?string
+    public function getAddress(): ?string
     {
-        return $this->adress;
+        return $this->address;
     }
 
-    public function setAdress(string $adress): static
+    public function setAddress(string $address): static
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }
@@ -173,14 +157,14 @@ class Student
     }
 
     /**
-     * @return Collection<int, NewMessages>
+     * @return Collection<int, NewMessage>
      */
     public function getNewMessages(): Collection
     {
         return $this->newMessages;
     }
 
-    public function addNewMessage(NewMessages $newMessage): static
+    public function addNewMessage(NewMessage $newMessage): static
     {
         if (!$this->newMessages->contains($newMessage)) {
             $this->newMessages->add($newMessage);
@@ -190,7 +174,7 @@ class Student
         return $this;
     }
 
-    public function removeNewMessage(NewMessages $newMessage): static
+    public function removeNewMessage(NewMessage $newMessage): static
     {
         if ($this->newMessages->removeElement($newMessage)) {
             // set the owning side to null (unless already changed)
@@ -202,31 +186,46 @@ class Student
         return $this;
     }
 
-    public function getApplications(): ?Applications
+    public function getStudentReview(): ?StudentReview
     {
-        return $this->applications;
+        return $this->studentReview;
     }
 
-    public function setApplications(?Applications $applications): static
+    public function setStudentReview(StudentReview $studentReview): static
     {
-        $this->applications = $applications;
+        // set the owning side of the relation if necessary
+        if ($studentReview->getStudent() !== $this) {
+            $studentReview->setStudent($this);
+        }
+
+        $this->studentReview = $studentReview;
 
         return $this;
     }
 
-    public function getStudentReviews(): ?StudentReviews
+    /**
+     * @return Collection<int, Application>
+     */
+    public function getApplications(): Collection
     {
-        return $this->studentReviews;
+        return $this->applications;
     }
 
-    public function setStudentReviews(StudentReviews $studentReviews): static
+    public function addApplication(Application $application): static
     {
-        // set the owning side of the relation if necessary
-        if ($studentReviews->getStudent() !== $this) {
-            $studentReviews->setStudent($this);
+        if (!$this->applications->contains($application)) {
+            $this->applications->add($application);
+            $application->addStudent($this);
         }
 
-        $this->studentReviews = $studentReviews;
+        return $this;
+    }
+
+    public function removeApplication(Application $application): static
+    {
+        if ($this->applications->removeElement($application)) {
+            $application->removeStudent($this);
+        }
 
         return $this;
     }

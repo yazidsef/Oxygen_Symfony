@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\NewMessages;
+use App\Entity\NewMessage;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<NewMessages>
+ * @extends ServiceEntityRepository<NewMessage>
  *
- * @method NewMessages|null find($id, $lockMode = null, $lockVersion = null)
- * @method NewMessages|null findOneBy(array $criteria, array $orderBy = null)
- * @method NewMessages[]    findAll()
- * @method NewMessages[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method NewMessage|null find($id, $lockMode = null, $lockVersion = null)
+ * @method NewMessage|null findOneBy(array $criteria, array $orderBy = null)
+ * @method NewMessage[]    findAll()
+ * @method NewMessage[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class NewMessagesRepository extends ServiceEntityRepository
+class NewMessageRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, NewMessages::class);
+        parent::__construct($registry, NewMessage::class);
     }
 
 //    /**
-//     * @return NewMessages[] Returns an array of NewMessages objects
+//     * @return NewMessage[] Returns an array of NewMessage objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class NewMessagesRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?NewMessages
+//    public function findOneBySomeField($value): ?NewMessage
 //    {
 //        return $this->createQueryBuilder('n')
 //            ->andWhere('n.exampleField = :val')

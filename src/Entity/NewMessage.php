@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\NewMessagesRepository;
+use App\Repository\NewMessageRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: NewMessagesRepository::class)]
-class NewMessages
+#[ORM\Entity(repositoryClass: NewMessageRepository::class)]
+class NewMessage
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

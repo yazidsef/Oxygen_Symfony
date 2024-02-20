@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\StudentReviews;
+use App\Entity\StudentReview;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<StudentReviews>
+ * @extends ServiceEntityRepository<StudentReview>
  *
- * @method StudentReviews|null find($id, $lockMode = null, $lockVersion = null)
- * @method StudentReviews|null findOneBy(array $criteria, array $orderBy = null)
- * @method StudentReviews[]    findAll()
- * @method StudentReviews[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method StudentReview|null find($id, $lockMode = null, $lockVersion = null)
+ * @method StudentReview|null findOneBy(array $criteria, array $orderBy = null)
+ * @method StudentReview[]    findAll()
+ * @method StudentReview[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class StudentReviewsRepository extends ServiceEntityRepository
+class StudentReviewRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, StudentReviews::class);
+        parent::__construct($registry, StudentReview::class);
     }
 
 //    /**
-//     * @return StudentReviews[] Returns an array of StudentReviews objects
+//     * @return StudentReview[] Returns an array of StudentReview objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class StudentReviewsRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?StudentReviews
+//    public function findOneBySomeField($value): ?StudentReview
 //    {
 //        return $this->createQueryBuilder('s')
 //            ->andWhere('s.exampleField = :val')

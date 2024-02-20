@@ -19,14 +19,14 @@ class Discipline
     #[ORM\Column(length: 255)]
     private ?string $icon = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 255)]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $urlImage = null;
+    private ?string $urnImage = null;
 
     #[ORM\OneToMany(mappedBy: 'discipline', targetEntity: Course::class)]
     private Collection $courses;
@@ -77,14 +77,14 @@ class Discipline
         return $this;
     }
 
-    public function getUrlImage(): ?string
+    public function getUrnImage(): ?string
     {
-        return $this->urlImage;
+        return $this->urnImage;
     }
 
-    public function setUrlImage(string $urlImage): static
+    public function setUrnImage(string $urnImage): static
     {
-        $this->urlImage = $urlImage;
+        $this->urnImage = $urnImage;
 
         return $this;
     }

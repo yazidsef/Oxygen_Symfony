@@ -2,25 +2,24 @@
 
 namespace App\Entity;
 
-use App\Repository\ApplicationsRepository;
+use App\Repository\ApplicationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ApplicationsRepository::class)]
-class Applications
+#[ORM\Entity(repositoryClass: ApplicationRepository::class)]
+class Application
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToMany(mappedBy: 'applications', targetEntity: Student::class)]
-    private Collection $student;
-
-    #[ORM\OneToOne(inversedBy: 'applications', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(inversedBy: 'application')]
     private ?Course $course = null;
+
+    #[ORM\ManyToMany(targetEntity: Student::class, inversedBy: 'applications')]
+    private Collection $student;
 
     #[ORM\Column(length: 255)]
     private ?string $status = null;
@@ -35,6 +34,18 @@ class Applications
         return $this->id;
     }
 
+    public function getCourse(): ?Course
+    {
+        return $this->course;
+    }
+
+    public function setCourse(?Course $course): static
+    {
+        $this->course = $course;
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, Student>
      */
@@ -47,7 +58,6 @@ class Applications
     {
         if (!$this->student->contains($student)) {
             $this->student->add($student);
-            $student->setApplications($this);
         }
 
         return $this;
@@ -55,24 +65,7 @@ class Applications
 
     public function removeStudent(Student $student): static
     {
-        if ($this->student->removeElement($student)) {
-            // set the owning side to null (unless already changed)
-            if ($student->getApplications() === $this) {
-                $student->setApplications(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getCourse(): ?Course
-    {
-        return $this->course;
-    }
-
-    public function setCourse(Course $course): static
-    {
-        $this->course = $course;
+        $this->student->removeElement($student);
 
         return $this;
     }

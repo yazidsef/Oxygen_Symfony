@@ -2,18 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\StudentReviewsRepository;
+use App\Repository\StudentReviewRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: StudentReviewsRepository::class)]
-class StudentReviews
+#[ORM\Entity(repositoryClass: StudentReviewRepository::class)]
+class StudentReview
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(inversedBy: 'studentReviews', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'studentReview', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Student $student = null;
 
