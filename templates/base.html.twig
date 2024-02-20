@@ -10,6 +10,7 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+
         {% endblock %}
 
         {% block javascripts %}
@@ -18,5 +19,7 @@
     </head>
     <body>
         {% block body %}{% endblock %}
+        {% include 'components/footer.html.twig' %}
+
     </body>
 </html>
