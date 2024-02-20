@@ -135,13 +135,6 @@
 /*start coté responsive*/
 
 @media screen and (max-width: 1024px) {
-    .grid {
-        display: grid;
-    }
-    .main {
-        margin: 3rem auto;
-        width: 100%;
-    }
     .formation-title {
         margin: 1rem auto;
     }
@@ -217,12 +210,5 @@
         position: relative;
         top: 0.4rem;
         border-radius: 0.8rem
-    }
-}
-
-@media screen and (max-width:768) {
-    .main {
-        margin: 3rem auto;
-        width: 100%;
     }
 }
