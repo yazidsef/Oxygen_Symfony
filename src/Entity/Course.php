@@ -48,11 +48,11 @@ class Course
     private ?string $urlImage = null;
 
     #[ORM\OneToMany(mappedBy: 'course', targetEntity: Application::class)]
-    private Collection $application;
+    private Collection $applications;
 
     public function __construct()
     {
-        $this->application = new ArrayCollection();
+        $this->applications = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -185,13 +185,13 @@ class Course
      */
     public function getApplication(): Collection
     {
-        return $this->application;
+        return $this->applications;
     }
 
     public function addApplication(Application $application): static
     {
-        if (!$this->application->contains($application)) {
-            $this->application->add($application);
+        if (!$this->applications->contains($application)) {
+            $this->applications->add($application);
             $application->setCourse($this);
         }
 
@@ -200,7 +200,7 @@ class Course
 
     public function removeApplication(Application $application): static
     {
-        if ($this->application->removeElement($application)) {
+        if ($this->applications->removeElement($application)) {
             // set the owning side to null (unless already changed)
             if ($application->getCourse() === $this) {
                 $application->setCourse(null);

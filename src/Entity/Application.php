@@ -15,18 +15,18 @@ class Application
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'application')]
+    #[ORM\ManyToOne(inversedBy: 'applications')]
     private ?Course $course = null;
 
     #[ORM\ManyToMany(targetEntity: Student::class, inversedBy: 'applications')]
-    private Collection $student;
+    private Collection $students;
 
     #[ORM\Column(length: 255)]
     private ?string $status = null;
 
     public function __construct()
     {
-        $this->student = new ArrayCollection();
+        $this->students = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -51,13 +51,13 @@ class Application
      */
     public function getStudent(): Collection
     {
-        return $this->student;
+        return $this->students;
     }
 
-    public function addStudent(Student $student): static
+    public function addStudent(Student $students): static
     {
-        if (!$this->student->contains($student)) {
-            $this->student->add($student);
+        if (!$this->students->contains($students)) {
+            $this->students->add($students);
         }
 
         return $this;
@@ -65,7 +65,7 @@ class Application
 
     public function removeStudent(Student $student): static
     {
-        $this->student->removeElement($student);
+        $this->students->removeElement($student);
 
         return $this;
     }
