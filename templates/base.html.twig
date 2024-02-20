@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" type="image/png" href="{{ asset('build/images/logo-wild-code-school.svg') }}"/>
+        <link rel="icon" type="image/png" href="{{ asset('build/images/oxygen-logo.png') }}"/>
         <title>
+        
             {% block title %}Projet 3 Name{% endblock %}
         </title>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
@@ -16,6 +17,9 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+        <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@500;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" crossorigin="">
+
     </head>
     <body>
         {% block body %}{% endblock %}
