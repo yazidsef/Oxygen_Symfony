@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\StudentReviewRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
 
 #[ORM\Entity(repositoryClass: StudentReviewRepository::class)]
 class StudentReview
@@ -17,7 +18,7 @@ class StudentReview
     #[ORM\JoinColumn(nullable: false)]
     private ?Student $student = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $testimonial = null;
 
     public function getId(): ?int
