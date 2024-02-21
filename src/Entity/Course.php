@@ -183,7 +183,7 @@ class Course
     /**
      * @return Collection<int, Application>
      */
-    public function getApplication(): Collection
+    public function getApplications(): Collection
     {
         return $this->applications;
     }
