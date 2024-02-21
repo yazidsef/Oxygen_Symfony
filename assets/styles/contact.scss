@@ -1,0 +1,258 @@
+.contact {
+    display: flex;
+    flex-direction: column;
+    font-family: Tahoma;
+    padding-left: 19rem;
+    padding-right: 19rem;
+    padding-top: 6rem;
+    background-color: var(--secondaryColor);
+}
+
+.section {
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.parag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    margin: 0 auto;
+    font-size: 20px;
+    font-family: var(--principalFontFamily);
+    color: var(--thirdColor);
+}
+
+.center {
+    display: flex;
+    padding-top: 1.5rem;
+    margin: 0 auto;
+    font-size: 2.5rem;
+    color: rgb(89, 150, 237);
+    font-family: var(--principalFontFamily);
+}
+
+
+.info {
+
+    width: 70%;
+    border: solid #32a1ce;
+    border-radius: 90px;
+    color: rgb(10, 10, 10);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 10rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    font-size: 20px;
+    background-color: #ffffff;
+}
+
+.text {
+    font-size: 15px;
+    font-family: var(--principalFontFamily);
+    color: var(--thirdColor);
+    font-display: center;
+}
+
+.img {
+    float: left;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+}
+
+.img1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coord {
+    font-weight: bold;
+}
+
+
+.team {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+}
+
+.member-cards {
+    border: solid #b3ebf8;
+    border-radius: 90px;
+    color: rgb(10, 10, 10);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    font-size: 26px;
+    background-color: #f4f9f9;
+}
+
+/* css formu */
+
+.form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+form {
+    display: grid;
+    gap: 1.8rem;
+}
+
+form input {
+    border: none;
+    width: 100%;
+    font-size: 1.3rem;
+    background-color: #f7f7f7;
+}
+
+form fieldset {
+    padding: 1rem;
+    border: 1px solid #23A6F0;
+}
+
+form fieldset legend {
+    position: relative;
+    padding-right: 3.5rem;
+    left: 2rem;
+}
+
+form input:focus {
+    outline: none;
+}
+
+form input[type="submit"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #67c6fd;
+    width: 140px;
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--white-color);
+    font-weight: var(--font-weight);
+    margin: 0 auto;
+    transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, padding 0.3s ease-in-out;
+}
+
+form input[type="submit"]:hover {
+    background-color: #57bffb;
+    box-shadow: 3px 5px 5px 0px rgb(189, 188, 188);
+    cursor: pointer;
+    padding: 11px;
+}
+
+form fieldset textarea {
+    text-align: left;
+    border: none;
+    resize: none;
+    width: 100%;
+    overflow: auto;
+    background-color: var(--primary-color);
+}
+
+form fieldset:focus {
+    border: 3px solid black;
+}
+
+form fieldset textarea:focus {
+    outline: none;
+    border: none;
+    font-size: 1rem;
+}
+
+.error {
+    color: red;
+    border-bottom: 50%;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+
+
+.formValid {
+    color: green;
+    font-style: italic;
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-family: Tahoma;
+
+}
+
+
+::placeholder {
+    color: rgb(171, 171, 220);
+    font-size: 1rem;
+    font-style: oblique;
+
+}
+
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+    .info {
+
+        width: 100%;
+        padding-left: 1rem;
+        border: none;
+        font-size: 18px;
+        background-color: var(--secondaryColor);
+    }
+}
+
+@media screen and (min-width: 200px) and (max-width: 800px) {
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
+
+    }
+
+    .img {
+        display: none;
+    }
+
+    .button {
+        margin-left: 5rem;
+    }
+
+    .parag {
+        display: none;
+    }
+
+    .info {
+
+        width: 100%;
+        padding-left: 1rem;
+        border: none;
+        font-size: 18px;
+        background-color: var(--secondaryColor);
+    }
+
+    .team {
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+    }
+}

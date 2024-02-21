@@ -1,0 +1,159 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Contact : infos, adresse, equipe oxygen school{% endblock %}
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/assets/css/contact.css">
+{% endblock %}
+{% block content %}
+    <div class="contact">
+        <div>
+            <div>
+                <section class="section">
+
+                    <h1 class="center">Oxygen School : Qui sommes-nous</h1>
+                    <p class ='parag' >La mission d’Oxygen School est de rendre l’éducation accessible à tous. 
+                    Nous sommes un centre de formation qui permet à des milliers d’individus 
+                    partout en France de développer leurs compétences professionnelles et de se former aux métiers qui recrutent.</br>
+                    
+                        <div class="info"> 
+
+                                    <address>
+                                    <div class="coord">Contact d'Oxygen school : </div>
+                                    </br>
+                                    <div class="coord">
+                                        Adresse : </div>
+                                        68 av philipe augueste 75011 paris<br>
+                                        <br><div class="coord">Email : </div><a>contact@oxygen-school.com</a><br> 
+                                        <br><div class="coord">Téléphone : </div>
+                                        Fix : 01 50 22 32 23 <br>
+                                        Mobile : 01 50 22 32 23 <br>
+                                    </div>
+                                </address>
+                        </div>
+                </section>          
+            </div>
+            <h2 class="center">Contactez-nous</h2>    
+            <p class="parag">Vous avez besoin de renseignements supplémentaires concernant nos formations ?, n'hésitez pas à nous contacter. Nos conseillers formations sont disponibles du
+            lundi au vendredi, de 9h à 19h.</p>
+         <div id="formContact">
+        {% if success is defined %}
+            <div class="messForm">
+                <p class="formValid">{{ success }}</p>
+
+            </div>
+            {% endif %}  
+
+            <form method="POST" action="" class="form">
+                <fieldset>
+                        <legend>Votre prénom : *</legend>
+                    <input id="firstName" class="input" type="text" name="firstName" placeholder="Marc" value="{% if post is defined
+                    %}{{ post.firstName }}{% endif %}"/>
+
+
+                    </fieldset>
+                                  <p class="error">{{ errors.0 }}</p>
+
+
+                <fieldset>
+                 <legend>Votre nom : *</legend>
+                    <input id="lastName" class="input" type="text" name="lastName" placeholder="Ducas" value="{% if post is defined
+                    %}{{ post.lastName }}{% endif %}"/>
+
+                </fieldset>
+                                    <p class="error">{{ errors.1 }}</p>
+
+                
+                	<fieldset>
+                 <legend>Votre email : *</legend>                    
+                 <input id="email" class="input" name="email" placeholder="marc@gmail.com" value="{% if post is defined
+                    %}{{ post.email }}{% endif %}"/>
+
+                    </fieldset>
+                                        <p class="error">{{ errors.3 }}</p>
+
+                
+                <fieldset>
+                 <legend>Votre numéro de téléphone : *</legend>
+                	  <input id="phone" class="input" type="text" name="phone" placeholder="0160606060" value="{% if post is defined
+                    %}{{ post.phone }}{% endif %}"/>
+
+                    </fieldset>
+                                        <p class="error">{{ errors.4}}</p>
+
+                    <fieldset>
+                 <legend>Votre message : *</legend>
+                 <textarea id="message" class="input" type="text" rows="5" name="message" value="{% if post is defined
+                    %}{{ post.email}}{% endif %}"/></textarea>
+
+                </fieldset>
+                                    <p class="error">{{ errors.2 }}</p>
+
+                <div class="button">
+                    <input type="submit" value="Envoyer">
+                </div>
+            </form>
+             
+        </div>
+        <h2 class="center">L'équipe d'Oxygen School</h2>
+        <p class ='parag'>Oxygen School est un centre active et unique en son genre. Créé et porté par trois développeurs web.</br>
+        Chaque cursus de formation constitue une opportunité d'acquérir une expérience pratique et de développer votre créativité. Nous sommes déterminés à vous 
+        préparer à une carrière réussie en vous fournissant les compétences et les connaissances essentielles pour répondre aux besoins du marché. 
+  
+        <div class="team">
+            <div class="member-cards">
+                <div class="img1">
+                    <img src="assets\images\asma.png" alt="Asma Jaballah">
+                </div>
+                <h3>Asma Jaballah</h3>
+                <p class="text">Titulaire d’un Mastère 2 en BI et ayant 5 ans d'expérience en SEO. Passionnée du developpement,  je suis
+                actuellement en formation intensive En PHP afin d'accélérer le développement de mes compétences en ce domaine. </p>
+            
+                <span> 
+                    <div class="img1">
+                        <a href="https://github.com/assma8jaballah"><img src="assets\images\github.png" alt="github Asma"></a>
+                        <a href="https://www.linkedin.com/in/asma-jaballah/"><img src="assets\images\linkedin1.png" alt="Linkedin ASMA"></a>
+                    </div>
+                </span>
+
+            </div>
+
+            <div class="member-cards">
+                <div class="img1">
+                    <img src="assets\images\yazid.png" alt="photo de yazid">
+                </div>
+
+                <h3>Yazid Sefsaf</h3>
+                <p class="text">Titulaire d’un Mastère 2 en BI et ayant 5 ans d'expérience en SEO. Passionnée du developpement,  je suis
+                actuellement en formation intensive En PHP afin d'accélérer le développement de mes compétences en ce domaine. </p>
+           
+                <span> 
+                    <div class="img1">
+                        <a href="https://github.com/yazidsef"><img src="assets\images\github.png" alt="github yazid"></a>
+                        <a href="https://www.linkedin.com/in/yazid-sefsaf-90602a207/"><img src="assets\images\linkedin1.png" alt="Linkedin yazid"></a>
+                    </div>
+                </span>
+
+            </div>
+
+
+            <div class="member-cards">
+                <div class="img1">
+                    <img src="assets\images\dinhuy.png" alt="photo de dinhuy">
+                </div>
+
+                <h3>DinhHuy Trinh</h3>
+                <p class="text">Titulaire d’un Mastère 2 en BI et ayant 5 ans d'expérience en SEO. Passionnée du developpement,  je suis
+                actuellement en formation intensive En PHP afin d'accélérer le développement de mes compétences en ce domaine. </p>
+           
+                <span> 
+                    <div class="img1">
+                        <a href="https://github.com/LaserHuy"><img src="assets\images\github.png" alt="github dinhuy"></a>
+                        <a href="https://www.linkedin.com/in/huytrinhlaser/"><img src="assets\images\linkedin1.png" alt="Linkedin dinhuy"></a>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
