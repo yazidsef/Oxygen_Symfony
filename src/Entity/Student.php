@@ -46,7 +46,7 @@ class Student
     #[ORM\OneToOne(mappedBy: 'student', cascade: ['persist', 'remove'])]
     private ?StudentReview $studentReview = null;
 
-    #[ORM\ManyToMany(targetEntity: Application::class, mappedBy: 'student')]
+    #[ORM\ManyToMany(targetEntity: Application::class, mappedBy: 'students')]
     private Collection $applications;
 
     public function __construct()
