@@ -1,10 +1,9 @@
-{% extends 'layout.html.twig' %}
+{% extends 'base.html.twig' %}
 {% block title %}Contact : infos, adresse, equipe oxygen school{% endblock %}
-{% block stylesheet %}
-    {{ parent() }}
-    <link rel="stylesheet" href="/assets/css/contact.css">
-{% endblock %}
-{% block content %}
+
+{% block body %}
+
+<main>
     <div class="contact">
         <div>
             <div>
@@ -36,57 +35,42 @@
             <p class="parag">Vous avez besoin de renseignements supplémentaires concernant nos formations ?, n'hésitez pas à nous contacter. Nos conseillers formations sont disponibles du
             lundi au vendredi, de 9h à 19h.</p>
          <div id="formContact">
-        {% if success is defined %}
-            <div class="messForm">
-                <p class="formValid">{{ success }}</p>
-
+    
             </div>
-            {% endif %}  
-
             <form method="POST" action="" class="form">
                 <fieldset>
                         <legend>Votre prénom : *</legend>
-                    <input id="firstName" class="input" type="text" name="firstName" placeholder="Marc" value="{% if post is defined
-                    %}{{ post.firstName }}{% endif %}"/>
+                    <input id="firstName" class="input" type="text" name="firstName" placeholder="Marc"/>
 
 
                     </fieldset>
-                                  <p class="error">{{ errors.0 }}</p>
 
 
                 <fieldset>
                  <legend>Votre nom : *</legend>
-                    <input id="lastName" class="input" type="text" name="lastName" placeholder="Ducas" value="{% if post is defined
-                    %}{{ post.lastName }}{% endif %}"/>
+                    <input id="lastName" class="input" type="text" name="lastName" placeholder="Ducas"/>
 
                 </fieldset>
-                                    <p class="error">{{ errors.1 }}</p>
 
                 
                 	<fieldset>
                  <legend>Votre email : *</legend>                    
-                 <input id="email" class="input" name="email" placeholder="marc@gmail.com" value="{% if post is defined
-                    %}{{ post.email }}{% endif %}"/>
+                 <input id="email" class="input" name="email" placeholder="marc@gmail.com"/>
 
-                    </fieldset>
-                                        <p class="error">{{ errors.3 }}</p>
+                </fieldset>
 
                 
                 <fieldset>
-                 <legend>Votre numéro de téléphone : *</legend>
-                	  <input id="phone" class="input" type="text" name="phone" placeholder="0160606060" value="{% if post is defined
-                    %}{{ post.phone }}{% endif %}"/>
+                <legend>Votre numéro de téléphone : *</legend>
+                	  <input id="phone" class="input" type="text" name="phone" placeholder="0160606060"/>
 
                     </fieldset>
-                                        <p class="error">{{ errors.4}}</p>
 
                     <fieldset>
                  <legend>Votre message : *</legend>
-                 <textarea id="message" class="input" type="text" rows="5" name="message" value="{% if post is defined
-                    %}{{ post.email}}{% endif %}"/></textarea>
+                 <textarea id="message" class="input" type="text" rows="5" name="message"/></textarea>
 
                 </fieldset>
-                                    <p class="error">{{ errors.2 }}</p>
 
                 <div class="button">
                     <input type="submit" value="Envoyer">
@@ -102,7 +86,7 @@
         <div class="team">
             <div class="member-cards">
                 <div class="img1">
-                    <img src="assets\images\asma.png" alt="Asma Jaballah">
+                    <img src="{{ asset('build/images/asma.png') }}" alt="Asma Jaballah">
                 </div>
                 <h3>Asma Jaballah</h3>
                 <p class="text">Titulaire d’un Mastère 2 en BI et ayant 5 ans d'expérience en SEO. Passionnée du developpement,  je suis
@@ -110,8 +94,8 @@
             
                 <span> 
                     <div class="img1">
-                        <a href="https://github.com/assma8jaballah"><img src="assets\images\github.png" alt="github Asma"></a>
-                        <a href="https://www.linkedin.com/in/asma-jaballah/"><img src="assets\images\linkedin1.png" alt="Linkedin ASMA"></a>
+                        <a href="https://github.com/assma8jaballah"><img src="{{ asset('build/images/github.png') }}" alt="github Asma"></a>
+                        <a href="https://www.linkedin.com/in/asma-jaballah/"><img src="{{ asset('build/images/linkedin1.png') }}" alt="Linkedin ASMA"></a>
                     </div>
                 </span>
 
@@ -119,7 +103,7 @@
 
             <div class="member-cards">
                 <div class="img1">
-                    <img src="assets\images\yazid.png" alt="photo de yazid">
+                    <img src="{{ asset('build/images/yazid.png') }}" alt="photo de yazid">
                 </div>
 
                 <h3>Yazid Sefsaf</h3>
@@ -128,8 +112,8 @@
            
                 <span> 
                     <div class="img1">
-                        <a href="https://github.com/yazidsef"><img src="assets\images\github.png" alt="github yazid"></a>
-                        <a href="https://www.linkedin.com/in/yazid-sefsaf-90602a207/"><img src="assets\images\linkedin1.png" alt="Linkedin yazid"></a>
+                        <a href="https://github.com/yazidsef"><img src="assets\images\github.png" src="{{ asset('build/images/github.png') }}" alt="github yazid"></a>
+                        <a href="https://www.linkedin.com/in/yazid-sefsaf-90602a207/"><img src="{{ asset('build/images/linkedin1.png') }}" alt="Linkedin yazid"></a>
                     </div>
                 </span>
 
@@ -138,7 +122,7 @@
 
             <div class="member-cards">
                 <div class="img1">
-                    <img src="assets\images\dinhuy.png" alt="photo de dinhuy">
+                    <img src="{{ asset('build/images/dinhuy.png') }}" alt="photo de dinhuy">
                 </div>
 
                 <h3>DinhHuy Trinh</h3>
@@ -147,13 +131,14 @@
            
                 <span> 
                     <div class="img1">
-                        <a href="https://github.com/LaserHuy"><img src="assets\images\github.png" alt="github dinhuy"></a>
-                        <a href="https://www.linkedin.com/in/huytrinhlaser/"><img src="assets\images\linkedin1.png" alt="Linkedin dinhuy"></a>
+                        <a href="https://github.com/LaserHuy"><img src="{{ asset('build/images/github.png') }}" alt="github dinhuy"></a>
+                        <a href="https://www.linkedin.com/in/huytrinhlaser/"><img src="{{ asset('build/images/linkedin1.png') }}" alt="Linkedin dinhuy"></a>
                     </div>
                 </span>
             </div>
         </div>
 
     </div>
+    </main>
 
 {% endblock %}
