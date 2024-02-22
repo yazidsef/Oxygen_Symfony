@@ -8,22 +8,22 @@
     <!-- debut de section formation description  -->
     <section class="formation-description grid">
 
-
+        {{dump(formation)}}
+        
         <!-- debut de section formation description  -->
         <div class="formation-description-text">
-            <h1>&quot; formation PHP developer &quot;</h1>
+            <h1>&quot; formation {{formation.name}}&quot;</h1>
             <p class="formation-article">
-                vous apprendrez les bases des langages web HTML et CSS afin d'appréhender et être à même de créer vos premières pages web vous apprendrez les bases des langages web HTML et CSS afin d'appréhender et être à même de créer vos premières pages web..vous apprendrez
-                les bases des langages web HTML et CSS afin d'appréhender et être à même de créer vos premières pages web.vous apprendrez les bases des langages web HTML et CSS afin d'appréhender et être à même de créer vos premières pages web.
+                {{formation.description}}
             </p >
         </div>
         <!-- fin de formation description text -->
         <div class="formation-infos-description">
-            <div><i class="ri-hourglass-line"></i>"399 heures"</div>
-            <div><i class="ri-map-pin-line"></i>"A distance"</div>
-            <div><i class="ri-calendar-2-line"></i>"Avril 2024"</div>
-            <div><i class="ri-graduation-cap-line"></i>"Bac+2"</div>
-            <div><i class="ri-money-euro-circle-line"></i>"100% prise en charge"</div>
+            <div><i class="ri-hourglass-line"></i>"{{formation.duration}}"</div>
+            <div><i class="ri-map-pin-line"></i>"{{formation.location}}"</div>
+            <div><i class="ri-calendar-2-line"></i>"{{ formation.date|date('Y-m-d') }}"</div>
+            <div><i class="ri-graduation-cap-line"></i>"{{ formation.degree}}"</div>
+            <div><i class="ri-money-euro-circle-line"></i>"{{ formation.FinancingSupport}}% prise en charge"</div>
         </div>
         <!-- fin de formation description infos -->
 
