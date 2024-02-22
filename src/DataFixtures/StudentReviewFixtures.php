@@ -19,11 +19,18 @@ class StudentReviewFixtures extends Fixture implements DependentFixtureInterface
         // Verify that $studentReviews is an array
         if (is_array($studentReviews)) {
             foreach ($studentReviews as $studentReviewData) {
+                // Get the Student entity by its ID
+                $studentId = $studentReviewData['student_id'];
+                $student = $this->getReference("student_$studentId");
+
+                // Create a new StudentReview entity
                 $studentReview = (new StudentReview())
-                    ->setStudentId($studentReviewData['student_id'])
+                    ->setStudent($student)
                     ->setTestimonial($studentReviewData['testimonial']);
+
+                // Persist the StudentReview entity
                 $manager->persist($studentReview);
-            }
+                }
         }
 
         $manager->flush();

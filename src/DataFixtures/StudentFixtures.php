@@ -19,7 +19,7 @@ class StudentFixtures extends Fixture
 
         // Verify that $students is an array
         if (is_array($students)) {
-            foreach ($students as $studentData) {
+            foreach ($students as $key => $studentData) {
                 $student = (new Student())
                     ->setFirstName($studentData['firstName'])
                     ->setLastName($studentData['lastName'])
@@ -32,6 +32,7 @@ class StudentFixtures extends Fixture
                     ->setAvatarImage($studentData['avatar_image']);
 
                 $manager->persist($student);
+                $this->addReference("student_$key", $student);
             }
         }
 
