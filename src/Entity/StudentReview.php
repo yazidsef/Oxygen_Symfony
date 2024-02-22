@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\StudentReviewRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\DBAL\Types\Types;
+use App\Entity\Student;
 
 #[ORM\Entity(repositoryClass: StudentReviewRepository::class)]
 class StudentReview
@@ -15,7 +16,7 @@ class StudentReview
     private ?int $id = null;
 
     #[ORM\OneToOne(inversedBy: 'studentReview', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: 'student_id', referencedColumnName: 'id')]
     private ?Student $student = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -31,7 +32,7 @@ class StudentReview
         return $this->student;
     }
 
-    public function setStudent(Student $student): static
+    public function setStudent(Student $student): self
     {
         $this->student = $student;
 
@@ -43,7 +44,7 @@ class StudentReview
         return $this->testimonial;
     }
 
-    public function setTestimonial(string $testimonial): static
+    public function setTestimonial(string $testimonial): self
     {
         $this->testimonial = $testimonial;
 

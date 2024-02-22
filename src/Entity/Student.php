@@ -22,6 +22,9 @@ class Student
     #[ORM\Column(length: 150)]
     private ?string $lastName = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
+
     #[ORM\Column]
     private ?int $tel = null;
 
@@ -80,6 +83,18 @@ class Student
     public function setLastName(string $lastName): static
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
 
         return $this;
     }
@@ -189,18 +204,6 @@ class Student
     public function getStudentReview(): ?StudentReview
     {
         return $this->studentReview;
-    }
-
-    public function setStudentReview(StudentReview $studentReview): static
-    {
-        // set the owning side of the relation if necessary
-        if ($studentReview->getStudent() !== $this) {
-            $studentReview->setStudent($this);
-        }
-
-        $this->studentReview = $studentReview;
-
-        return $this;
     }
 
     /**

@@ -21,6 +21,19 @@ class StudentRepository extends ServiceEntityRepository
         parent::__construct($registry, Student::class);
     }
 
+    public function findOneByEmail(string $email): ?Student
+    {
+        // Debug statement
+        echo "Searching for student with email: $email\n";
+
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
 //    /**
 //     * @return Student[] Returns an array of Student objects
 //     */
