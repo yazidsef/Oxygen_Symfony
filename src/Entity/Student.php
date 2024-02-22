@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: StudentRepository::class)]
 class Student
 {
@@ -29,7 +30,7 @@ class Student
     #[Assert\NotBlank]
     #[ORM\Column]
     private ?int $tel = null;
-    
+
     #[Assert\NotBlank]
     #[ORM\Column(length: 150)]
     private ?string $degree = null;

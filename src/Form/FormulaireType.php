@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 class FormulaireType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -25,12 +26,12 @@ class FormulaireType extends AbstractType
             ->add('formation')
             ->add('studentReview', EntityType::class, [
                 'class' => StudentReview::class,
-'choice_label' => 'id',
+        'choice_label' => 'id',
             ])
             ->add('applications', EntityType::class, [
                 'class' => Application::class,
-'choice_label' => 'id',
-'multiple' => true,
+        'choice_label' => 'id',
+        'multiple' => true,
             ])
         ;
     }
