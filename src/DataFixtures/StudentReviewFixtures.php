@@ -30,7 +30,7 @@ class StudentReviewFixtures extends Fixture implements DependentFixtureInterface
 
                 // Persist the StudentReview entity
                 $manager->persist($studentReview);
-                }
+            }
         }
 
         $manager->flush();
