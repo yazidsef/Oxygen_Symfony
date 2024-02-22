@@ -23,9 +23,15 @@ class Student
     private ?string $firstName = null;
 
     #[Assert\NotBlank]
-    #[Assert\Length(max: 255)]
+    #[Assert\Length(max: 55)]
     #[ORM\Column(length: 150)]
     private ?string $lastName = null;
+    
+   
+
+    #[Assert\NotBlank]
+    #[ORM\Column(length: 1000)]
+    private ?string $message = null;
 
     #[Assert\NotBlank]
     #[ORM\Column]
@@ -93,6 +99,19 @@ class Student
 
         return $this;
     }
+    
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message): static
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
 
     public function getTel(): ?int
     {

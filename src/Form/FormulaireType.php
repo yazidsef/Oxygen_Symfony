@@ -17,22 +17,13 @@ class FormulaireType extends AbstractType
     {
         $builder
             ->add('firstName', TextType::class)
-            ->add('lastName')
+            ->add('lastName', TextType::class)
+            ->add('email')
             ->add('tel')
             ->add('degree')
             ->add('birthday')
-            ->add('address')
-            ->add('avatarImage')
-            ->add('formation')
-            ->add('studentReview', EntityType::class, [
-                'class' => StudentReview::class,
-        'choice_label' => 'id',
-            ])
-            ->add('applications', EntityType::class, [
-                'class' => Application::class,
-        'choice_label' => 'id',
-        'multiple' => true,
-            ])
+            ->add('message')
+           
         ;
     }
 

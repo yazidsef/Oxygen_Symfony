@@ -60,6 +60,10 @@
             </form>
         </div>
         <!-- fin de formation description form -->
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit">S'inscrire</button>
+        {{ form_end(form) }}
     </section>
 </main>
 {% endblock %}
