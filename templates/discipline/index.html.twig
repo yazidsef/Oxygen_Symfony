@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Discipline{% endblock %}
-
+{% block stylesheets %}
+    {{ encore_entry_link_tags('discipline') }}
+{% endblock %}
 {% block body %}
 
     <!-- debut de formation main  -->
