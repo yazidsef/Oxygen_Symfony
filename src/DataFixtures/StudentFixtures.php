@@ -12,7 +12,19 @@ class StudentFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         // add data to student table
-        $students = require __DIR__ . '/Data/students.php';
+        // Ensure that the file exists and is readable
+        $filePath = 'src/Data/Students.php';
+        if (!file_exists($filePath)) {
+            throw new \Exception("File '$filePath' not found.");
+        }
+
+        // Attempt to include the file
+        $students = require $filePath;
+
+        // Verify that $studentsData is an array
+        if (!is_array($students)) {
+            throw new \Exception("'$filePath' does not return an array.");
+        }
         foreach ($students as $studentData) {
             $student = (new Student())
                 ->setFirstName($studentData['firstName'])
