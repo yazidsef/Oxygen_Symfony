@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: StudentRepository::class)]
 class Student
 {
@@ -16,24 +16,33 @@ class Student
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 55)]
     #[ORM\Column(length: 255)]
     private ?string $firstName = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 255)]
     #[ORM\Column(length: 150)]
     private ?string $lastName = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column]
     private ?int $tel = null;
-
+    
+    #[Assert\NotBlank]
     #[ORM\Column(length: 150)]
     private ?string $degree = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $birthday = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 200)]
     private ?string $address = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
     private ?string $avatarImage = null;
 
