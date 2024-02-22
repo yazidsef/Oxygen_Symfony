@@ -21,8 +21,8 @@ class DisciplineFixture extends Fixture
             $discipline->setName($faker->randomElement($disciplines));
             $discipline->setDescription($faker->paragraph());
             $discipline->setUrnImage($faker->word());
-            if ($this->hasReference('discipline_' .$i)) {
-                $this->setReference('discipline_' .$i, $discipline);
+            if ($this->hasReference('discipline_' . $i)) {
+                $this->setReference('discipline_' . $i, $discipline);
             } else {
                 $this->addReference('discipline_' . $i, $discipline);
             }

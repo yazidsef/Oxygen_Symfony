@@ -16,7 +16,7 @@ class CourseFixutre extends Fixture implements DependentFixtureInterface
         for ($i = 10; $i < 20; $i++) {
             $faker = Factory::create();
             $course = new Course();
-            $course->setDiscipline($this->getReference('discipline_'.$faker->numberBetween(0, 15)));
+            $course->setDiscipline($this->getReference('discipline_' . $faker->numberBetween(0, 15)));
             $course->setName($faker->word());
             $course->setDescription($faker->paragraph());
             $course->setUrlImage($faker->imageUrl());
