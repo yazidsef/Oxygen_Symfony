@@ -26,8 +26,8 @@ class Student
     #[Assert\Length(max: 55)]
     #[ORM\Column(length: 150)]
     private ?string $lastName = null;
-    
-   
+
+
 
     #[Assert\NotBlank]
     #[ORM\Column(length: 1000)]
@@ -99,7 +99,7 @@ class Student
 
         return $this;
     }
-    
+
     public function getMessage(): ?string
     {
         return $this->message;

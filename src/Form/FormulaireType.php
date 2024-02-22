@@ -23,7 +23,7 @@ class FormulaireType extends AbstractType
             ->add('degree')
             ->add('birthday')
             ->add('message')
-           
+
         ;
     }
 
