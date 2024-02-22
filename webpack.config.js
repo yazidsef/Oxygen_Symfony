@@ -33,6 +33,8 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('contact', './assets/contact.js')
+    .addEntry('global', './assets/global.js')
+    .addEntry('footer', './assets/footer.js')
     .addEntry('formation', './assets/formation.js')
     .addEntry('discipline', './assets/discipline.js')
 
