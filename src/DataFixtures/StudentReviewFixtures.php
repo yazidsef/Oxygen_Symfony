@@ -14,23 +14,16 @@ class StudentReviewFixtures extends Fixture implements DependentFixtureInterface
     {
         // Ensure that the file exists and is readable
         $filePath = 'src/Data/StudentReviews.php';
-        if (!file_exists($filePath)) {
-            throw new \Exception("File '$filePath' not found.");
-        }
-
-        // Attempt to include the file
         $studentReviews = require $filePath;
 
         // Verify that $studentReviews is an array
-        if (!is_array($studentReviews)) {
-            throw new \Exception("'$filePath' does not return an array.");
-        }
-
-        foreach ($studentReviews as $studentReviewData) {
-            $studentReview = (new StudentReview())
-                ->setStudentId($studentReviewData['student_id'])
-                ->setTestimonial($studentReviewData['testimonial']);
-            $manager->persist($studentReview);
+        if (is_array($studentReviews)) {
+            foreach ($studentReviews as $studentReviewData) {
+                $studentReview = (new StudentReview())
+                    ->setStudentId($studentReviewData['student_id'])
+                    ->setTestimonial($studentReviewData['testimonial']);
+                $manager->persist($studentReview);
+            }
         }
 
         $manager->flush();
