@@ -25,7 +25,7 @@ class StudentRepository extends ServiceEntityRepository
     {
         // Debug statement
         echo "Searching for student with email: $email\n";
-        
+
         return $this->createQueryBuilder('s')
             ->andWhere('s.email = :email')
             ->setParameter('email', $email)

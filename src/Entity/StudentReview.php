@@ -16,7 +16,7 @@ class StudentReview
 
     #[ORM\OneToOne(inversedBy: 'studentReview', cascade: ['persist', 'remove'])]
     #[ORM\Column(type: Types::INTEGER)]
-    private ?int $student_id = null;
+    private ?int $studentId = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $testimonial = null;
@@ -28,12 +28,12 @@ class StudentReview
 
     public function getStudentId(): ?int
     {
-        return $this->student_id;
+        return $this->studentId;
     }
 
-    public function setStudentId(int $student_id): self
+    public function setStudentId(int $studentId): self
     {
-        $this->student_id = $student_id;
+        $this->studentId = $studentId;
 
         return $this;
     }
