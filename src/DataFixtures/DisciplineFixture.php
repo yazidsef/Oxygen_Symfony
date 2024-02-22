@@ -14,15 +14,15 @@ class DisciplineFixture extends Fixture
 
         $faker = Factory::create();
 
-        for ($i = 0; $i < 15; $i++) {
+        for ($i = 0; $i < 25; $i++) {
             $disciplines = ['Informatique', 'Finance', 'Physics', 'Chemistry', 'Biology'];
             $discipline = new Discipline();
             $discipline->setIcon($faker->word());
             $discipline->setName($faker->randomElement($disciplines));
             $discipline->setDescription($faker->paragraph());
             $discipline->setUrnImage($faker->word());
-            if ($this->hasReference('discipline_' . $i)) {
-                $this->setReference('discipline_' . $i, $discipline);
+            if ($this->hasReference('discipline_' .$i)) {
+                $this->setReference('discipline_' .$i, $discipline);
             } else {
                 $this->addReference('discipline_' . $i, $discipline);
             }

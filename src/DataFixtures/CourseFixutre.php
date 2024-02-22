@@ -13,10 +13,10 @@ class CourseFixutre extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        for ($i = 0; $i < 15; $i++) {
+        for ($i = 10; $i < 20; $i++) {
             $faker = Factory::create();
             $course = new Course();
-            $course->setDiscipline($this->getReference('discipline_' . $i));
+            $course->setDiscipline($this->getReference('discipline_'.$faker->numberBetween(0, 15)));
             $course->setName($faker->word());
             $course->setDescription($faker->paragraph());
             $course->setUrlImage($faker->imageUrl());
