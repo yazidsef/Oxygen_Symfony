@@ -10,14 +10,13 @@
     align-items: center;
     width: 80%;
     margin: 0 auto;
-    gap: 1rem;
     border-radius: 0.8rem;
-    padding: 1.8rem;
+    padding: 1.5rem;
     box-shadow: 3px 5px 5px 0px rgb(189, 188, 188);
     background-color: rgb(236, 236, 236);
 }
 
-.formation-text {
+.discipline-text {
     width: 50%;
 }
 
@@ -26,23 +25,26 @@
     list-style-type: none;
 }
 
-.formation-text a {
+.discipline-text a {
     background-color: #23A6F0;
     color: white;
+    text-decoration: none;
     padding: 0.8rem;
     position: relative;
-    top: 2.3rem;
+    top: 1.2rem;
     border-radius: 0.8rem
 }
 
-.formation-text span {
+.discipline-text span {
     display: flex;
     gap: 1rem;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    bottom: 2.5rem;
+    bottom: 1.5rem;
 }
 
-.formation-text span h2 {
+.discipline-text span h2 {
     width: 100%;
 }
 
@@ -69,7 +71,7 @@
     border-radius: 50%;
 }
 
-.formation-text p {
+.discipline-text p {
     font-size: 1.2rem;
     width: 100%;
     height: 80px;
@@ -150,14 +152,14 @@
         margin: 0 auto;
         border: 1px solid black
     }
-    .formation-text {
+    .discipline-text {
         width: 50%;
         display: grid;
         font-size: 0.6rem;
         height: 100%;
         font-family: sans-serif;
     }
-    .formation-text span {
+    .discipline-text span {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -165,7 +167,7 @@
         position: relative;
         bottom: 0.3rem;
     }
-    .formation-text p {
+    .discipline-text p {
         font-size: 0.8rem;
         overflow: ellipsis;
         white-space: wrap;
@@ -201,7 +203,7 @@
     .formation-infos ul li:last-child {
         width: max-content;
     }
-    .formation-text a {
+    .discipline-text a {
         display: flex;
         font-size: 0.5rem;
         align-items: center;
