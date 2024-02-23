@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('formation') }}
+{% endblock %}
+{% block body %}
+
+<main>
+    <!-- debut de section formation description  -->
+    <section class="formation-description grid">        
+        <!-- debut de section formation description  -->
+        <div class="formation-description-text">
+            <h1>&quot; formation {{formation.name}}&quot;</h1>
+            <p class="formation-article">
+                {{formation.description}}
+            </p >
+        </div>
+        <!-- fin de formation description text -->
+        <div class="formation-infos-description">
+            <div><i class="ri-hourglass-line"></i>"{{formation.duration}}"</div>
+            <div><i class="ri-map-pin-line"></i>"{{formation.location}}"</div>
+            <div><i class="ri-calendar-2-line"></i>"{{ formation.date|date('Y-m-d') }}"</div>
+            <div><i class="ri-graduation-cap-line"></i>"{{ formation.degree}}"</div>
+            <div><i class="ri-money-euro-circle-line"></i>"{{ formation.FinancingSupport}}% prise en charge"</div>
+        </div>
+        <!-- fin de formation description infos -->
+
+        <!-- debut de formation description form -->
+        <div class="form">
+            <h2>Inscrivez </h2>
+            
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Prenom</legend>
+                    <input required name="{{ field_name(form.firstName) }}">
+                </fieldset>
+                <div class="alert-error">{{ form_errors(form.firstName) }}</div>
+                <fieldset>
+                    <legend>Nom </legend>
+                    <input required name="{{ field_name(form.lastName) }}">
+                </fieldset>
+                <div class="alert-error">{{ form_errors(form.lastName) }}</div>
+                <fieldset>
+                    <legend>Date de naissance</legend>
+                    <input required type="date" name="{{ field_name(form.birthday) }}">
+                </fieldset>
+                <div class="alert-error">{{ form_errors(form.birthday) }}</div>
+                <fieldset>
+                    <legend>Email</legend>
+                    <input required type="email" name="{{ field_name(form.email) }}">
+                </fieldset>
+                <div class="alert-error">{{ form_errors(form.email) }}</div>
+
+                <fieldset>
+                    <legend>Tel</legend>
+                    <input required type="tel" name="{{ field_name(form.tel) }}">
+                </fieldset>
+                <div class="alert-error">{{ form_errors(form.tel) }}</div>
+                <fieldset>
+                    <legend>Niveau detudes</legend>
+                    <input required name="{{ field_name(form.degree) }}">
+                </fieldset>
+                <div class="alert-error">{{ form_errors(form.degree) }}</div>
+                <fieldset>
+                    <legend>Message</legend>
+                    <textarea name="{{ field_name(form.message) }}" id="" cols="30" rows="10">
+        
+                    </textarea>
+                </fieldset>
+                <div class="alert-error">{{ form_errors(form.message) }}</div>
+                <input required type="hidden" value="{{formation.name}}" name="{{ field_name(form.formation) }}">
+
+                <input type="submit" value="S'inscrire">
+            </form>
+        </div>
+        <!-- fin de formation description form -->
+    </section>
+</main>
+{% endblock %}
