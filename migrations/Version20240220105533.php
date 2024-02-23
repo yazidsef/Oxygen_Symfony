@@ -37,7 +37,7 @@ final class Version20240220105533 extends AbstractMigration
         $this->addSql('DROP TABLE new_messages');
         $this->addSql('DROP TABLE student_reviews');
         $this->addSql('ALTER TABLE contact CHANGE message message VARCHAR(255) NOT NULL');
-        $this->addSql('ALTER TABLE discipline CHANGE name name VARCHAR(255) NOT NULL, CHANGE url_image urn_image VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE discipline CHANGE name name VARCHAR(255) NOT NULL, CHANGE url_image url_image VARCHAR(1255) NOT NULL');
         $this->addSql('ALTER TABLE student DROP FOREIGN KEY FK_B723AF33591CC992');
         $this->addSql('DROP INDEX IDX_B723AF33591CC992 ON student');
         $this->addSql('DROP INDEX IDX_B723AF3329A0022 ON student');
@@ -63,7 +63,7 @@ final class Version20240220105533 extends AbstractMigration
         $this->addSql('DROP TABLE new_message');
         $this->addSql('DROP TABLE student_review');
         $this->addSql('ALTER TABLE contact CHANGE message message LONGTEXT NOT NULL');
-        $this->addSql('ALTER TABLE discipline CHANGE name name VARCHAR(100) NOT NULL, CHANGE urn_image url_image VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE discipline CHANGE name name VARCHAR(100) NOT NULL, CHANGE url_image url_image VARCHAR(1255) NOT NULL');
         $this->addSql('ALTER TABLE student ADD course_id INT NOT NULL, ADD applications_id INT NOT NULL, ADD adress VARCHAR(255) NOT NULL, DROP address, CHANGE first_name first_name VARCHAR(150) NOT NULL, CHANGE formation formation VARCHAR(255) NOT NULL');
         $this->addSql('ALTER TABLE student ADD CONSTRAINT FK_B723AF33591CC992 FOREIGN KEY (course_id) REFERENCES course (id)');
         $this->addSql('ALTER TABLE student ADD CONSTRAINT FK_B723AF3329A0022 FOREIGN KEY (applications_id) REFERENCES applications (id)');

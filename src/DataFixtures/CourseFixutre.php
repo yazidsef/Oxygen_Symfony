@@ -6,27 +6,32 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Course;
-use App\DataFixtures\DisciplineFixtures;
-use Faker\Factory;
+use DateTime;
 
 class CourseFixutre extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        for ($i = 10; $i < 20; $i++) {
-            $faker = Factory::create();
-            $course = new Course();
-            $course->setDiscipline($this->getReference('discipline_' . $faker->numberBetween(0, 15)));
-            $course->setName($faker->word());
-            $course->setDescription($faker->paragraph());
-            $course->setUrlImage($faker->imageUrl());
-            $course->setCapacity($faker->numberBetween(10, 100));
-            $course->setDuration($faker->numberBetween(1, 12) . ' ' . $faker->randomElement(['months','weeks','days']));
-            $course->setDate($faker->dateTimeBetween('-1 years', 'now'));
-            $course->SetDegree($faker->randomElement(['Bac+2','Bac+3','Bac+5']));
-            $course->setLocation($faker->city());
-            $course->setFinancingSupport($faker->numberBetween(50, 100));
-            $manager->persist($course);
+        $courses = require 'src/Data/Courses.php';
+
+        // Verify that $courses is an array
+        if (is_array($courses)) {
+            foreach ($courses as $key => $courseData) {
+                $course = (new Course())
+                    ->setDiscipline($this->getReference('discipline_' . $courseData['discipline_id']))
+                    ->setName($courseData['name'])
+                    ->setDescription($courseData['description'])
+                    ->setUrlImage($courseData['url_image'])
+                    ->setCapacity($courseData['capacity'])
+                    ->setDuration($courseData['duration'])
+                    ->setDate(new DateTime($courseData['date']))
+                    ->setDegree($courseData['degree'])
+                    ->setLocation($courseData['location'])
+                    ->setFinancingSupport($courseData['financing_support']);
+
+                $manager->persist($course);
+                $this->addReference("course_$key", $course);
+            }
         }
         $manager->flush();
     }

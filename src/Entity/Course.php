@@ -17,7 +17,7 @@ class Course
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'courses')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: 'discipline_id', referencedColumnName: 'id')]
     private ?Discipline $discipline = null;
 
     #[ORM\Column(length: 255)]

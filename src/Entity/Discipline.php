@@ -26,7 +26,7 @@ class Discipline
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $urnImage = null;
+    private ?string $urlImage = null;
 
     #[ORM\OneToMany(mappedBy: 'discipline', targetEntity: Course::class)]
     private Collection $courses;
@@ -77,14 +77,14 @@ class Discipline
         return $this;
     }
 
-    public function getUrnImage(): ?string
+    public function getUrlImage(): ?string
     {
-        return $this->urnImage;
+        return $this->urlImage;
     }
 
-    public function setUrnImage(string $urnImage): static
+    public function setUrlImage(string $urlImage): static
     {
-        $this->urnImage = $urnImage;
+        $this->urlImage = $urlImage;
 
         return $this;
     }

@@ -11,22 +11,21 @@ class DisciplineFixture extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
+        $disciplines = require 'src/Data/Disciplines.php';
 
-        $faker = Factory::create();
+        // Verify that $disciplines is an array
+        if (is_array($disciplines)) {
+            foreach ($disciplines as $key => $disciplineData) {
+                $key = $key + 1;
+                $discipline = (new Discipline())
+                    ->setIcon($disciplineData['icon'])
+                    ->setName($disciplineData['name'])
+                    ->setDescription($disciplineData['description'])
+                    ->setUrlImage($disciplineData['url_image']);
 
-        for ($i = 0; $i < 25; $i++) {
-            $disciplines = ['Informatique', 'Finance', 'Physics', 'Chemistry', 'Biology'];
-            $discipline = new Discipline();
-            $discipline->setIcon($faker->word());
-            $discipline->setName($faker->randomElement($disciplines));
-            $discipline->setDescription($faker->paragraph());
-            $discipline->setUrnImage($faker->word());
-            if ($this->hasReference('discipline_' . $i)) {
-                $this->setReference('discipline_' . $i, $discipline);
-            } else {
-                $this->addReference('discipline_' . $i, $discipline);
+                $manager->persist($discipline);
+                $this->addReference("discipline_$key", $discipline);
             }
-            $manager->persist($discipline);
         }
         $manager->flush();
     }
