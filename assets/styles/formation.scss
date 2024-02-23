@@ -109,11 +109,15 @@ form {
     gap: 1.8rem;
 }
 
+.form ul li {
+    list-style: none;
+}
+
 form input {
     border: none;
     width: 100%;
     font-size: 1.3rem;
-    background-color: #f7f7f7;
+    background-color: #ffffff;
 }
 
 form fieldset {
@@ -158,7 +162,7 @@ form fieldset textarea {
     resize: none;
     width: 100%;
     overflow: auto;
-    background-color: var(--primary-color);
+    background-color: var(--link-color);
 }
 
 form fieldset:focus {

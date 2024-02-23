@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: StudentRepository::class)]
 class Student
@@ -16,28 +17,41 @@ class Student
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank(message: 'Entrez votre prénom svp')]
+    #[Assert\Length(max: 55)]
     #[ORM\Column(length: 255)]
     private ?string $firstName = null;
 
+    #[Assert\NotBlank(message: 'Entrez votre nom svp')]
+    #[Assert\Length(max: 55)]
     #[ORM\Column(length: 150)]
     private ?string $lastName = null;
 
+    #[Assert\NotBlank(message: 'Entrez votre email svp')]
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+    #[Assert\NotBlank(message: 'Entrez votre message svp')]
+    #[ORM\Column(length: 1000)]
+    private ?string $message = null;
+
+    #[Assert\NotBlank(message: 'Entrez votre numéro de téléphone svp')]
     #[ORM\Column]
     private ?int $tel = null;
 
+    #[Assert\NotBlank(message: 'Entrez votre diplôme svp')]
     #[ORM\Column(length: 150)]
     private ?string $degree = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotBlank(message: 'Entrez votre date de naissance svp')]
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $birthday = null;
 
-    #[ORM\Column(length: 200)]
+    #[ORM\Column(length: 200, nullable: true)]
     private ?string $address = null;
 
-    #[ORM\Column(length: 255)]
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $avatarImage = null;
 
     #[ORM\Column(length: 150)]
@@ -98,6 +112,19 @@ class Student
 
         return $this;
     }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message): static
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
 
     public function getTel(): ?int
     {
