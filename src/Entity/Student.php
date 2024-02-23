@@ -17,40 +17,41 @@ class Student
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: 'Entrez votre prénom svp')]
     #[Assert\Length(max: 55)]
     #[ORM\Column(length: 255)]
     private ?string $firstName = null;
 
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: 'Entrez votre nom svp')]
     #[Assert\Length(max: 55)]
     #[ORM\Column(length: 150)]
     private ?string $lastName = null;
 
+    #[Assert\NotBlank(message: 'Entrez votre email svp')]
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
 
-
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: 'Entrez votre message svp')]
     #[ORM\Column(length: 1000)]
     private ?string $message = null;
 
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: 'Entrez votre numéro de téléphone svp')]
     #[ORM\Column]
     private ?int $tel = null;
 
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: 'Entrez votre diplôme svp')]
     #[ORM\Column(length: 150)]
     private ?string $degree = null;
 
-    #[Assert\NotBlank]
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotBlank(message: 'Entrez votre date de naissance svp')]
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $birthday = null;
 
-    #[Assert\NotBlank]
-    #[ORM\Column(length: 200)]
+    #[ORM\Column(length: 200, nullable: true)]
     private ?string $address = null;
 
-    #[Assert\NotBlank]
-    #[ORM\Column(length: 255)]
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $avatarImage = null;
 
     #[ORM\Column(length: 150)]
@@ -96,6 +97,18 @@ class Student
     public function setLastName(string $lastName): static
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
 
         return $this;
     }
@@ -218,18 +231,6 @@ class Student
     public function getStudentReview(): ?StudentReview
     {
         return $this->studentReview;
-    }
-
-    public function setStudentReview(StudentReview $studentReview): static
-    {
-        // set the owning side of the relation if necessary
-        if ($studentReview->getStudent() !== $this) {
-            $studentReview->setStudent($this);
-        }
-
-        $this->studentReview = $studentReview;
-
-        return $this;
     }
 
     /**
