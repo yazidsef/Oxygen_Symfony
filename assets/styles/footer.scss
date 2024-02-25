@@ -84,7 +84,7 @@ footer .footer {
 }
 
 .footer-bottom {
-    width: 100%;
+    // width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -175,6 +175,14 @@ footer .footer {
         flex-direction: column;
         padding: 1rem 0;
         height: auto;
+    }
+
+    .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
     .footer-cards {
         display: none;

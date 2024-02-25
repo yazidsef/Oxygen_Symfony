@@ -16,6 +16,11 @@
     font-family: Playpen Sans, 'sans serif';
 }
 
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
 .grid {
     display: grid;
     gap: 1.8rem;

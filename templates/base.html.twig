@@ -16,11 +16,14 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            <script src="https://kit.fontawesome.com/b51dcfdd20.js" crossorigin="anonymous"></script>
+
         {% endblock %}
     </head>
     <body>
         {% include 'components/navbar.html.twig' %}
         {% block body %}{% endblock %}
         {% include 'components/footer.html.twig' %}
+
     </body>
 </html>

@@ -23,5 +23,7 @@
         "watch": "encore dev --watch",
         "build": "encore production --progress"
     },
-    "dependencies": {}
+    "dependencies": {
+        "@splidejs/splide": "^4.1.4"
+    }
 }

@@ -1,0 +1,12 @@
+<section class="splide formation">
+    <div class="splide__track">
+        <ul class="splide__list card-container">
+            {% for discipline in disciplines %}
+                <li class="splide__slide">
+                    {% include 'components/home/card-dis.html.twig' with {'discipline': discipline} %}
+                </li>
+            {% endfor %}
+            <div class="swiper-pagination"></div>
+        </ul>
+    </div>
+</section>

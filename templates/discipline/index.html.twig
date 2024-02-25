@@ -2,6 +2,7 @@
 
 {% block title %}Discipline{% endblock %}
 {% block stylesheets %}
+    {{ parent() }}
     {{ encore_entry_link_tags('discipline') }}
 {% endblock %}
 {% block body %}
