@@ -21,7 +21,7 @@ class Contact
     private ?string $lastName = null;
 
     #[ORM\Column]
-    private ?int $phone = null;
+    private ?int $tel = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
@@ -58,14 +58,14 @@ class Contact
         return $this;
     }
 
-    public function getPhone(): ?int
+    public function gettel(): ?int
     {
-        return $this->phone;
+        return $this->tel;
     }
 
-    public function setPhone(int $phone): static
+    public function settel(int $tel): static
     {
-        $this->phone = $phone;
+        $this->tel = $tel;
 
         return $this;
     }
