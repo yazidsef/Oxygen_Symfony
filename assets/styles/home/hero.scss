@@ -73,13 +73,13 @@
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
-
-    #hero {
-        padding: 1rem 0;
-    }
+@media screen and (max-width: 768px) {
     .content h1 {
         margin: 0;
         padding: 0 2rem;
+        font-size: 1.5rem;
+    }
+    .content p{
+        display: none;
     }
 }

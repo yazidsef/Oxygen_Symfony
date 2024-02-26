@@ -45,4 +45,8 @@ return[
                             '2593667617711553075_n.jpg?ex=65cccb41&is=65ba5641&hm=' .
                             '56ba502d8bfbbd399fdba3d0851f8e4872c486b5637f5167343c3ca879eba5f5&',
     ],
+    [
+        'avatar_image' => 'https://cdn.discordapp.com/avatars/1091793807714025605/' .
+                            'c36f711aa22c99b7617386c4911f1451.png?size=1024',
+    ],
 ];

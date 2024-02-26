@@ -12,9 +12,23 @@ use App\Entity\Course;
 class DisciplineController extends AbstractController
 {
     #[Route('/discipline', name: 'app_discipline')]
-    public function index(CourseRepository $courseRepository): Response
-    {
-        $course = $courseRepository->findAll();
-        return $this->render('discipline/index.html.twig', ['courses' => $course]);
+    public function index(
+        CourseRepository $courseRepository,
+        DisciplineRepository $disciplineRepository
+    ): Response {
+        $courses = $courseRepository->findAll();
+        $disciplines = $disciplineRepository->findAll();
+        $filteredCourses = $courses;
+        $disciplineId = isset($_GET['discipline_id']) ? intval($_GET['discipline_id']) : null;
+        if ($disciplineId) {
+            $filteredCourses = array_filter($courses, function (Course $course) use ($disciplineId) {
+                return $course->getDiscipline()->getId() === $disciplineId;
+            });
+        }
+        return $this->render('discipline/index.html.twig', [
+            'courses' => $filteredCourses,
+            'disciplines' => $disciplines,
+            'disciplineId' => $disciplineId
+        ]);
     }
 }

@@ -6,11 +6,22 @@
     {{ encore_entry_link_tags('discipline') }}
 {% endblock %}
 {% block body %}
-
+    {% include 'components/home/hero.html.twig' %}
     <!-- debut de formation main  -->
     <main class="main">
+        <div class="course-filters">
+            <form class="course-filters" action="{{ app.request.uri }}" method="GET">
+                <a href="/discipline" class="filter-button {% if disciplineId is null %}active{% endif %}">All <i class="fa-solid fa-circle-check"></i></a>
+                {% for discipline in disciplines %}
+                    <button class="filter-button {% if disciplineId == discipline.id %}active{% endif %}" name="discipline_id" value="{{ discipline.id }}">
+                        {{ discipline.name }}
+                        <i class="fa-solid fa-circle-check"></i>
+                    </button>
+                {% endfor %}
+            </form>
+        </div>
         <section class="section grid">
-            <h1 class="formation-title">Nos formation en Informatique</h1>
+            <h1 class="formation-title">Nos formation</h1>
             
             <!-- debut de formation components -->
 
@@ -19,20 +30,21 @@
                     <li class="discipline-presentation">
                         <div class="discipline-components">
                             <!--debut de formation text qui contient title description et bouton  -->
+                            <img src="{{ course.urlImage }}" alt="">  
                             <div class="discipline-text">
-                                <span> <img src="assets\img\img\frame-39978-3.png" width="50px" height="50px" alt="">  <h2>{{ course.name }}</h2></span>
+                                <h2>{{ course.name }}</h2>
                                 <p>
-                                    {{ course.description}}.
+                                    {{ course.discipline.name}}.
                                 </p>
-                                <a href="/formation/{{ course.id}}">Postuler</a>
+                                <a href="/formation/{{ course.id }}">Postuler</a>
                             </div>
                             <div class="formation-infos">
                                 <ul>
                                     <li><i class="ri-hourglass-line"></i>{{ course.duration}}</li>
                                     <li><i class="ri-map-pin-line"></i>{{ course.location}}</li>
-                                    <li><i class="ri-calendar-2-line"></i>{{ course.date|date('Y-m-d H:i:s') }}</li>
+                                    <li><i class="ri-calendar-2-line"></i>{{ course.date|date('M/y') }}</li>
                                     <li><i class="ri-graduation-cap-line"></i>{{ course.degree}}</li>
-                                    <li><i class="ri-money-euro-circle-line"></i>{{ course.FinancingSupport}} % Financée</li>
+                                    <li><i class="ri-money-euro-circle-line"></i>{{ course.FinancingSupport}} %</li>
                                 </ul>
                             </div>
                         </div>
