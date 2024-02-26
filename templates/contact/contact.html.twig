@@ -38,47 +38,76 @@
             <h2 class="center">Contactez-nous</h2>    
             <p class="parag">Vous avez besoin de renseignements supplémentaires concernant nos formations ?, n'hésitez pas à nous contacter. Nos conseillers formations sont disponibles du
             lundi au vendredi, de 9h à 19h.</p>
-         <div id="formContact">
-    
+<div id="formContact">
+         {% for message in app.flashes('success') %}
+            <div class="formValid">
+                {{ message }}
             </div>
-            <form method="POST" action="" class="form">
+        {% endfor %}
+
+            <form method="POST" action="" class="form" novalidate="novalidate">
                 <fieldset>
-                        <legend>Votre prénom : *</legend>
-                    <input id="firstName" class="input" type="text" name="firstName" placeholder="Marc"/>
-
-
-                    </fieldset>
+                 <legend>Votre prénom : *</legend>
+                 <input required name="{{ field_name(form.firstName) }}">
+                </fieldset>
+                <div class="error">
+                    {{ form_errors(form.firstName) }}
+                </div>
 
 
                 <fieldset>
                  <legend>Votre nom : *</legend>
-                    <input id="lastName" class="input" type="text" name="lastName" placeholder="Ducas"/>
-
+                 <input required name="{{ field_name(form.lastName) }}">
                 </fieldset>
-
-                
-                	<fieldset>
-                 <legend>Votre email : *</legend>                    
-                 <input id="email" class="input" name="email" placeholder="marc@gmail.com"/>
-
-                </fieldset>
+                <div class="error">
+                    {{ form_errors(form.lastName) }}
+                </div>
 
                 
                 <fieldset>
-                <legend>Votre numéro de téléphone : *</legend>
-                	  <input id="phone" class="input" type="text" name="phone" placeholder="0160606060"/>
-
-                    </fieldset>
-
-                    <fieldset>
-                 <legend>Votre message : *</legend>
-                 <textarea id="message" class="input" type="text" rows="5" name="message"/></textarea>
-
+                 <legend>Votre email : *</legend>                    
+                 <input required name="{{ field_name(form.email) }}">
                 </fieldset>
+                <div class="error">
+                    {{ form_errors(form.email) }}
+                </div>
+
+                <fieldset>
+                 <legend>Votre numéro de téléphone : *</legend>                    
+                 <input required name="{{ field_name(form.tel) }}">
+                </fieldset>
+                <div class="error">
+                    {{ form_errors(form.tel) }}
+                </div>
+                
+
+                <fieldset>
+                    <legend>Message</legend>
+                    <textarea name="{{ field_name(form.message) }}" id="" cols="30" rows="10">
+                    </textarea>
+                </fieldset>
+                <div class="error">
+                    {{ form_errors(form.message) }}
+                </div>
 
                 <div class="button">
                     <input type="submit" value="Envoyer">
                 </div>
+           
+          
+            </div>
+             {% if success is defined %}
+            <div class="messForm">
+                <p class="formValid">{{ message }}</p> {{dump(success)}}
+            </div>
+            {% endif %} 
+
+            {% for message in app.flashes('success') %}
+{{dump ('success')}}
+                    <div class="formValid">
+                        {{ message }}
+                    </div>
+            {% endfor %}
             </form>
              
         <h2 class="center">L'équipe d'Oxygen School</h2>
