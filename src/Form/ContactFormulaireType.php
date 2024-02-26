@@ -41,7 +41,7 @@ class ContactFormulaireType extends AbstractType
                     ]),
                 ]
             ])
-            ->add('tel', TextType::class, [
+            ->add('phone', TextType::class, [
 
 
                 'constraints' => [
@@ -63,7 +63,7 @@ class ContactFormulaireType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => contact::class
+            'data_class' => Contact::class
         ]);
     }
 }

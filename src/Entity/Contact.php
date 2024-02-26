@@ -23,7 +23,7 @@ class Contact
     #[ORM\Column(length: 150)]
     private ?string $lastName = null;
 
-    #[ORM\Column(type: Types::INTEGER, length: 10)]
+    #[ORM\Column(type: Types::INTEGER, length: 20)]
     private ?int $phone = null;
 
     #[ORM\Column(length: 255)]

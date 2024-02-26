@@ -9,112 +9,94 @@
 {% block body %}
 <main>
 <div class="contact">
+    <div>
         <div>
-            <div>
-                <section class="section">
-
-                    <h1 class="center">Oxygen School : Qui sommes-nous</h1>
-                    <p class ='parag' >La mission d’Oxygen School est de rendre l’éducation accessible à tous. 
-                    Nous sommes un centre de formation qui permet à des milliers d’individus 
-                    partout en France de développer leurs compétences professionnelles et de se former aux métiers qui recrutent.</br>
-                    
-                        <div class="info"> 
-
-                                    <address>
-                                    <div class="coord">Contact d'Oxygen school : </div>
-                                    </br>
-                                    <div class="coord">
-                                        Adresse : </div>
-                                        68 av philipe augueste 75011 paris<br>
-                                        <br><div class="coord">Email : </div><a>contact@oxygen-school.com</a><br> 
-                                        <br><div class="coord">Téléphone : </div>
-                                        Fix : 01 50 22 32 23 <br>
-                                        Mobile : 01 50 22 32 23 <br>
-                                    </div>
-                                </address>
+            <section class="section">
+                <h1 class="center">Oxygen School : Qui sommes-nous</h1>
+                <p class='parag'>La mission d’Oxygen School est de rendre l’éducation accessible à tous. 
+                Nous sommes un centre de formation qui permet à des milliers d’individus 
+                partout en France de développer leurs compétences professionnelles et de se former aux métiers qui recrutent.</br>
+                <div class="info"> 
+                    <address>
+                        <div class="coord">Contact d'Oxygen school : </div>
+                        </br>
+                        <div class="coord">
+                            Adresse : </div>
+                            68 av philipe augueste 75011 paris<br>
+                            <br><div class="coord">Email : </div><a>contact@oxygen-school.com</a><br> 
+                            <br><div class="coord">Téléphone : </div>
+                            Fix : 01 50 22 32 23 <br>
+                            Mobile : 01 50 22 32 23 <br>
                         </div>
-                </section>          
-            </div>
-            <h2 class="center">Contactez-nous</h2>    
-            <p class="parag">Vous avez besoin de renseignements supplémentaires concernant nos formations ?, n'hésitez pas à nous contacter. Nos conseillers formations sont disponibles du
-            lundi au vendredi, de 9h à 19h.</p>
-<div id="formContact">
-         {% for message in app.flashes('success') %}
-            <div class="formValid">
-                {{ message }}
-            </div>
-        {% endfor %}
-
-            <form method="POST" action="" class="form" novalidate="novalidate">
+                    </address>
+                </div>
+            </section>          
+        </div>
+        <h2 class="center">Contactez-nous</h2>    
+        <p class="parag">Vous avez besoin de renseignements supplémentaires concernant nos formations ?, n'hésitez pas à nous contacter. Nos conseillers formations sont disponibles du
+        lundi au vendredi, de 9h à 19h.</p>
+        <div id="formContact">
+            {% for message in app.flashes('success') %}
+                <div class="formValid">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <form method="post" action="" class="form">
                 <fieldset>
-                 <legend>Votre prénom : *</legend>
-                 <input required name="{{ field_name(form.firstName) }}">
+                    <legend>Votre prénom : *</legend>
+                    <input required name="{{ field_name(form.firstName) }}">
                 </fieldset>
                 <div class="error">
                     {{ form_errors(form.firstName) }}
                 </div>
-
-
                 <fieldset>
-                 <legend>Votre nom : *</legend>
-                 <input required name="{{ field_name(form.lastName) }}">
+                    <legend>Votre nom : *</legend>
+                    <input required name="{{ field_name(form.lastName) }}">
                 </fieldset>
                 <div class="error">
                     {{ form_errors(form.lastName) }}
                 </div>
-
-                
                 <fieldset>
-                 <legend>Votre email : *</legend>                    
-                 <input required name="{{ field_name(form.email) }}">
+                    <legend>Votre email : *</legend>                    
+                    <input required name="{{ field_name(form.email) }}">
                 </fieldset>
                 <div class="error">
                     {{ form_errors(form.email) }}
                 </div>
-
                 <fieldset>
-                 <legend>Votre numéro de téléphone : *</legend>                    
-                 <input required name="{{ field_name(form.tel) }}">
+                    <legend>Votre numéro de téléphone : *</legend>                    
+                    <input required name="{{ field_name(form.phone) }}">
                 </fieldset>
                 <div class="error">
-                    {{ form_errors(form.tel) }}
+                    {{ form_errors(form.phone) }}
                 </div>
-                
-
                 <fieldset>
                     <legend>Message</legend>
-                    <textarea name="{{ field_name(form.message) }}" id="" cols="30" rows="10">
-                    </textarea>
+                    <textarea name="{{ field_name(form.message) }}" id="" cols="30" rows="10"></textarea>
                 </fieldset>
                 <div class="error">
                     {{ form_errors(form.message) }}
                 </div>
-
                 <div class="button">
                     <input type="submit" value="Envoyer">
                 </div>
-           
-          
-            </div>
-             {% if success is defined %}
-            <div class="messForm">
-                <p class="formValid">{{ message }}</p> {{dump(success)}}
-            </div>
-            {% endif %} 
-
-            {% for message in app.flashes('success') %}
-{{dump ('success')}}
-                    <div class="formValid">
-                        {{ message }}
-                    </div>
-            {% endfor %}
             </form>
-             
+            {% if success is defined %}
+                <div class="messForm">
+                    <p class="formValid">{{ message }}</p> {{dump(success)}}
+                </div>
+            {% endif %} 
+            {% for message in app.flashes('success') %}
+                {{dump ('success')}}
+                <div class="formValid">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
         <h2 class="center">L'équipe d'Oxygen School</h2>
-        <p class ='parag'>Oxygen School est un centre active et unique en son genre. Créé et porté par trois développeurs web.</br>
+        <p class='parag'>Oxygen School est un centre active et unique en son genre. Créé et porté par trois développeurs web.</br>
         Chaque cursus de formation constitue une opportunité d'acquérir une expérience pratique et de développer votre créativité. Nous sommes déterminés à vous 
         préparer à une carrière réussie en vous fournissant les compétences et les connaissances essentielles pour répondre aux besoins du marché. 
-  
         <div class="team">
             <div class="member-cards">
                 <div class="img1">
@@ -123,44 +105,34 @@
                 <h3>Asma Jaballah</h3>
                 <p class="text">Titulaire d’un Mastère 2 en BI et ayant 5 ans d'expérience en SEO. Passionnée du developpement,  je suis
                 actuellement en formation intensive En PHP afin d'accélérer le développement de mes compétences en ce domaine. </p>
-            
                 <span> 
                     <div class="img1">
                         <a href="https://github.com/assma8jaballah"><img src="{{ asset('build/images/github.png') }}" alt="github Asma"></a>
                         <a href="https://www.linkedin.com/in/asma-jaballah/"><img src="{{ asset('build/images/linkedin1.png') }}" alt="Linkedin ASMA"></a>
                     </div>
                 </span>
-
             </div>
-
             <div class="member-cards">
                 <div class="img1">
                     <img src="{{ asset('build/images/yazid.png') }}" alt="photo de yazid">
                 </div>
-
                 <h3>Yazid Sefsaf</h3>
                 <p class="text">Titulaire d’un Mastère 2 en BI et ayant 5 ans d'expérience en SEO. Passionnée du developpement,  je suis
                 actuellement en formation intensive En PHP afin d'accélérer le développement de mes compétences en ce domaine. </p>
-           
                 <span> 
                     <div class="img1">
                         <a href="https://github.com/yazidsef"><img src="{{ asset('build/images/github.png') }}" alt="github yazid"></a>
                         <a href="https://www.linkedin.com/in/yazid-sefsaf-90602a207/"><img src="{{ asset('build/images/linkedin1.png') }}" alt="Linkedin yazid"></a>
                     </div>
                 </span>
-
             </div>
-
-
             <div class="member-cards">
                 <div class="img1">
                     <img src="{{ asset('build/images/dinhuy.png') }}" alt="photo de dinhuy">
                 </div>
-
                 <h3>DinhHuy Trinh</h3>
                 <p class="text">Titulaire d’un Mastère 2 en BI et ayant 5 ans d'expérience en SEO. Passionnée du developpement,  je suis
                 actuellement en formation intensive En PHP afin d'accélérer le développement de mes compétences en ce domaine. </p>
-           
                 <span> 
                     <div class="img1">
                         <a href="https://github.com/LaserHuy"><img src="{{ asset('build/images/github.png') }}" alt="github dinhuy"></a>
@@ -169,7 +141,7 @@
                 </span>
             </div>
         </div>
-      </div>
-   </div> 
-   </main>
+    </div>
+</div> 
+</main>
 {% endblock %}

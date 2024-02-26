@@ -11,10 +11,7 @@ class ContactFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         // add data to contact table
-
-        $filePath = 'src/Data/Contacts.php';
-        // Attempt to include the file
-        $contacts = require $filePath;
+        $contacts = require 'src/Data/Contacts.php';
 
         // Verify that $contacts is an array
         if (is_array($contacts)) {
@@ -23,7 +20,7 @@ class ContactFixtures extends Fixture
                     ->setFirstName($contactData['firstName'])
                     ->setLastName($contactData['lastName'])
                     ->setEmail($contactData['email'])
-                    ->setTel($contactData['tel'])
+                    ->setPhone($contactData['phone'])
                     ->setMessage($contactData['message']);
 
                 $manager->persist($contact);
