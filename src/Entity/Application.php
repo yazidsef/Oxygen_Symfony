@@ -168,16 +168,4 @@ class Application
 
         return $this;
     }
-
-    public function getCourseIdByFormation(string $formation): int
-    {
-        return match ($formation) {
-            'Bachelor' => 1,
-            'Bac +2' => 2,
-            'Bac +3' => 3,
-            'Bac +4' => 4,
-            'Bac +5' => 5,
-            default => 1,
-        };
-    }
 }
