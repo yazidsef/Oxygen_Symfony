@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\contact;
+use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,7 +18,7 @@ class ContactFormulaireType extends AbstractType
     {
         $builder
             ->add('firstName', TextType::class, [
-            
+
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez ajouter un prénom valide !',
@@ -26,7 +26,7 @@ class ContactFormulaireType extends AbstractType
                 ]
             ])
             ->add('lastName', TextType::class, [
-               
+
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez ajouter un nom valide !',
@@ -34,7 +34,7 @@ class ContactFormulaireType extends AbstractType
                 ]
             ])
             ->add('email', EmailType::class, [
-              
+
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez ajouter un email valide !',
@@ -42,8 +42,8 @@ class ContactFormulaireType extends AbstractType
                 ]
             ])
             ->add('tel', TextType::class, [
-             
-                
+
+
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez un numéro de téléphone valide !',
@@ -51,20 +51,19 @@ class ContactFormulaireType extends AbstractType
                 ]
             ])
             ->add('message', TextareaType::class, [
-                
+
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez ajouter un message valide !',
                     ]),
                 ]
                 ]);
-
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => contact::class,
+            'data_class' => contact::class
         ]);
     }
 }
