@@ -6,7 +6,6 @@ use App\Entity\Application;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,7 +23,6 @@ class FormulaireType extends AbstractType
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
             ])
-            // ->add('course_id', HiddenType::class)
         ;
     }
 
