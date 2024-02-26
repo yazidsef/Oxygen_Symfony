@@ -8,7 +8,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Course;
 use DateTime;
 
-class CourseFixutre extends Fixture implements DependentFixtureInterface
+class CourseFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {

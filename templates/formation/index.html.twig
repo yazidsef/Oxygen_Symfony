@@ -70,7 +70,7 @@
                     </textarea>
                 </fieldset>
                 <div class="alert-error">{{ form_errors(form.message) }}</div>
-                <input required type="hidden" value="{{formation.name}}" name="{{ field_name(form.formation) }}">
+                {# <input required type="hidden" value="{{ formation.id }}" name="{{ field_name(form.course_id) }}"> #}
 
                 <input type="submit" value="S'inscrire">
             </form>

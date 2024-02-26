@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Student;
+use App\Entity\Application;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -24,16 +24,15 @@ class FormulaireType extends AbstractType
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
             ])
-            ->add('formation', HiddenType::class, [
-                'data' => 'default_value',
-            ])
+            // ->add('course_id', HiddenType::class)
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Student::class,
+            'data_class' => Application::class,
+            'course_id' => null,
             'constraints' => [
                 new UniqueEntity(fields: ['email']),
                 new UniqueEntity(fields: ['tel'])
