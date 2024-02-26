@@ -9,6 +9,10 @@
 import './styles/home/hero.scss';
 import './styles/home/formation.scss';
 import './styles/home/card-dis.scss';
+import './styles/home/intro-main.scss';
+import './styles/home/std-review.scss';
+import './styles/home/card-review.scss';
+
 
 
 import Splide from '@splidejs/splide';
@@ -31,7 +35,9 @@ new Splide( '.splide', {
             perPage: 3,
         },
         767: {
+            type   : 'loop',
             perPage: 1,
+            autoplay: true,
         },
     },
     gap: '1.5rem',
@@ -39,21 +45,21 @@ new Splide( '.splide', {
 
 // SETUP OPTION SECOND SLIDE
 
-// const splide2 = new Splide( '#course', {
-//     type   : 'carousel',
-//     pagination: false,
-//     perPage: 5,
-//     focus: 'center',
-//     breakpoints: {
-//         1200: {
-//             perPage: 3,
-//         },
-//         767: {
-//             perPage: 1,
-//         },
-//     },
-//     gap: '1.5rem',
-//     arrows: true,     
+new Splide( '#splide2', {
+    type   : 'loop',
+    autoplay: true,
+    pagination: false,
+    perPage: 5,
+    focus: 'center',
+    breakpoints: {
+        1200: {
+            perPage: 4,
+        },
+        767: {
+            perPage: 1,
+        },
+    },
+    gap: '1.5rem',
+    arrows: true,     
 
-// });
-// splide2.mount();
+}).mount();

@@ -20,29 +20,14 @@ class StudentReviewRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, StudentReview::class);
     }
-
-//    /**
-//     * @return StudentReview[] Returns an array of StudentReview objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?StudentReview
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    // find all student reviews with related student
+    public function findAllWithStudents()
+    {
+        return $this->createQueryBuilder('r')
+            ->leftJoin('r.student', 's')
+            ->addSelect('s')
+            ->addSelect('r') // Include the 'r' alias to select all fields from StudentReview entity
+            ->getQuery()
+            ->getResult();
+    }
 }

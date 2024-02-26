@@ -1,0 +1,47 @@
+.card-review {
+    padding: 2rem;
+    background-color: rgba(67, 159, 212, 0.11);
+    width: 350px;
+    height: 200px;
+    border-radius: 50px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card-review .fa-quote-left {
+    font-size: 2rem;
+}
+
+.card-review .std-mess {
+    margin-top: 0;
+    font-size: .8rem;
+    line-height: 1.5;
+}
+
+.card-review .user-container {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.card-review .user-container .user-ava {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.card-review .user-container .user-info {
+    margin-left: 1rem;
+    flex-direction: column;
+}
+
+.card-review .user-container .user-info h3 {
+    font-weight: 700;
+    line-height: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-review .user-container .user-info p{
+    font-size: .8rem;
+    line-height: 0;
+}

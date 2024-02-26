@@ -14,13 +14,16 @@ class Contact
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $avatar_image = null;
+
     #[ORM\Column(length: 150)]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 150)]
     private ?string $lastName = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: Types::INTEGER, length: 10)]
     private ?int $phone = null;
 
     #[ORM\Column(length: 255)]
@@ -32,6 +35,18 @@ class Contact
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getAvatarImage(): ?string
+    {
+        return $this->avatar_image;
+    }
+
+    public function setAvatarImage(string $avatar_image): static
+    {
+        $this->avatar_image = $avatar_image;
+
+        return $this;
     }
 
     public function getFirstName(): ?string

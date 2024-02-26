@@ -1,0 +1,25 @@
+.std-review {
+    margin-top: 2rem;
+    height: 22rem;
+    overflow: hidden;
+}
+
+.std-review h2 {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.std-review .reviews{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.std-review .card-review-container {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+}

@@ -84,12 +84,12 @@ footer .footer {
 }
 
 .footer-bottom {
-    // width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
     padding: 2rem;
+    gap: 2rem;
 }
 
 .footer-bottom .picture {
