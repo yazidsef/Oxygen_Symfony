@@ -13,13 +13,13 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(
         DisciplineRepository $disciplineRepository,
-        StudentReviewRepository $studentReviewRepository
+        StudentReviewRepository $studentReview
     ): Response {
         // load all disciplines
         $disciplines = $disciplineRepository->findAll();
 
         // load all student reviews
-        $reviews = $studentReviewRepository->findAllWithStudents();
+        $reviews = $studentReview->findAllWithStudents();
 
         return $this->render(
             'home/index.html.twig',

@@ -21,7 +21,7 @@ class StudentReviewRepository extends ServiceEntityRepository
         parent::__construct($registry, StudentReview::class);
     }
     // find all student reviews with related student
-    public function findAllWithStudents()
+    public function findAllWithStudents(): array
     {
         return $this->createQueryBuilder('r')
             ->leftJoin('r.student', 's')
