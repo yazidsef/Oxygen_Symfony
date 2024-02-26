@@ -43,6 +43,9 @@ class FormationController extends AbstractController
             return $this->redirectToRoute('app_discipline');
         }
 
-        return $this->render('formation/index.html.twig', ['formation' => $course , 'form' => $form]);
+        return $this->render('formation/index.html.twig', [
+            'formation' => $course , 
+            'form' => $form
+        ]);
     }
 }
