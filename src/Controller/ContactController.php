@@ -27,7 +27,7 @@ class ContactController extends AbstractController
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
             $entityManager->persist($contact);
             $entityManager->flush();
-        
+
         //  Message de confirmation
             $this->addFlash('success', 'Merci ! nous avons bien reçu votre message, 
             nous vous répondrons dans les plus brefs délais.');
