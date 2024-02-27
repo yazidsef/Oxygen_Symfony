@@ -14,8 +14,7 @@ class ContactMessageFixtures extends Fixture
         $faker = Factory::create();
         $messages = require 'src/Data/NewMessages.php';
 
-        foreach ($messages as $i => $message) {
-
+        foreach ($messages as $message) {
             $contact = (new Contact())
                 ->setFirstName($faker->firstName)
                 ->setLastName($faker->lastName)
