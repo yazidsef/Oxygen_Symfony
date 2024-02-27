@@ -1,0 +1,14 @@
+<section class="std-review">
+    <h2>Les élèves d’ Oxygen School temoignent  </h2>
+    <div id="splide2" class="splide reviews">
+        <div class="splide__track">
+            <ul class="splide__list card-review-container">
+                {% for review in reviews %}
+                    <li class="splide__slide">
+                        {% include 'components/home/card-review.html.twig' with {'review': review} %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

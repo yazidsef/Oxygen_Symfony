@@ -1,23 +1,86 @@
+.course-filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+    gap: 1rem;
+}
+
+.filter-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.8rem;
+    background-color: #23A6F0;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-button i {
+    display: none;
+}
+
+.filter-button.active {
+    color: #000;
+}
+
+.filter-button.active i {
+    display: inline-block;
+    margin-left: 5px;
+    color: var(--secondary);
+}
+
+.filter-button:is(:hover, :focus-visible) {
+    background: #e9e6eb;
+    color: #000;
+}
+
 .formation-title {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.discipline-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+    justify-content: center;
+    align-items: center;
+}
 .discipline-components {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    width: 80%;
+    width: 30rem;
     margin: 0 auto;
     border-radius: 0.8rem;
-    padding: 1.5rem;
+    padding: 1rem;
     box-shadow: 3px 5px 5px 0px rgb(189, 188, 188);
     background-color: rgb(236, 236, 236);
 }
 
+.discipline-components img {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 0.8rem;
+    box-shadow: 3px 5px 5px 0px rgb(189, 188, 188);
+}
+
 .discipline-text {
-    width: 50%;
+    width: 200px;
+    margin-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.discipline-text h2 {
+    font-size: 1.2rem;
+    color: #23A6F0;
 }
 
 .discipline-presentation {
@@ -31,20 +94,12 @@
     text-decoration: none;
     padding: 0.8rem;
     position: relative;
-    top: 1.2rem;
-    border-radius: 0.8rem
-}
-
-.discipline-text span {
+    border-radius: 0.8rem;
     display: flex;
-    gap: 1rem;
-    align-items: center;
     justify-content: center;
-    position: relative;
-    bottom: 1.5rem;
 }
 
-.discipline-text span h2 {
+.discipline-text h2 {
     width: 100%;
 }
 
@@ -57,13 +112,13 @@
     margin-top: 1.3rem;
     font-weight: bold;
     font-weight: 500;
-    font-size: 1.2rem;
+    font-size: .8rem;
     width: 100%;
 }
 
 .formation-infos i {
     font-weight: normal;
-    margin: 0 10px;
+    margin: 0 5px;
     font-size: 1.3rem;
     color: #ffffff;
     background: #23A6F0;
@@ -74,11 +129,8 @@
 .discipline-text p {
     font-size: 1.2rem;
     width: 100%;
-    height: 80px;
     letter-spacing: 2px;
-    overflow: hidden;
-    white-space: wrap;
-    text-overflow: ellipsis;
+    margin-bottom: 2rem;
 }
 
 
@@ -141,81 +193,41 @@
 
 /*start coté responsive*/
 
-@media screen and (max-width: 1024px) {
-    .formation-title {
-        margin: 1rem auto;
-    }
-    .discipline-components {
-        height: 80%;
+@media screen and (max-width: 768px) {
+    .course-filters {
+        flex-wrap: wrap;
         gap: 1rem;
-        width: 85%;
-        margin: 0 auto;
-        border: 1px solid black
+        width: 350px;
     }
-    .discipline-text {
-        width: 50%;
-        display: grid;
-        font-size: 0.6rem;
-        height: 100%;
-        font-family: sans-serif;
-    }
-    .discipline-text span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        position: relative;
-        bottom: 0.3rem;
-    }
-    .discipline-text p {
-        font-size: 0.8rem;
-        overflow: ellipsis;
-        white-space: wrap;
-        text-overflow: ellipsis;
-        height: 75px;
-        text-align: justify;
-    }
-    .formation-infos {
-        width: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .formation-infos ul {
-        display: grid;
-        grid-template-columns: repeat(2, 2fr);
-        gap: 0.1rem;
-        justify-items: center;
-        /* Horizontally center the grid items */
-        align-items: center;
-    }
-    .formation-infos ul li {
+    .grid {
+        margin: 0;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 7px;
-        width: 100%;
-        margin-top: 0.2rem;
-        font-size: 0.7rem;
-        font-weight: bold;
     }
-    .formation-infos ul li:last-child {
-        width: max-content;
+    .discipline-list {
+        grid-template-columns: repeat(1, 1fr);
     }
-    .discipline-text a {
-        display: flex;
-        font-size: 0.5rem;
-        align-items: center;
-        width: 40%;
-        justify-content: center;
-        background-color: #23A6F0;
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 0.5rem;
-        position: relative;
-        top: 0.4rem;
-        border-radius: 0.8rem
+    .discipline-components {
+        width: 80%;
+    }
+
+    .discipline-components img {
+        width: 150px;
+        height: 150px;
+    }
+    .discipline-text {
+        margin: 0;
+        margin-left: 1.5rem;
+    }
+
+    .discipline-text h2 {
+        font-size: 1rem;
+    }
+
+    .discipline-text p{
+        font-size: .8rem;
+    }
+    .formation-infos {
+        display: none;
     }
 }

@@ -12,10 +12,7 @@ class StudentFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         // add data to student table
-
-        $filePath = 'src/Data/Students.php';
-        // Attempt to include the file
-        $students = require $filePath;
+        $students = require 'src/Data/Students.php';
 
         // Verify that $students is an array
         if (is_array($students)) {

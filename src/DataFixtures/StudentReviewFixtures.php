@@ -13,8 +13,7 @@ class StudentReviewFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         // Ensure that the file exists and is readable
-        $filePath = 'src/Data/StudentReviews.php';
-        $studentReviews = require $filePath;
+        $studentReviews = require 'src/Data/StudentReviews.php';
 
         // Verify that $studentReviews is an array
         if (is_array($studentReviews)) {

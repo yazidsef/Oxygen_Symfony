@@ -2,6 +2,7 @@
 
 {% block title %}Formation{% endblock %}
 {% block stylesheets %}
+    {{ parent() }}
     {{ encore_entry_link_tags('formation') }}
 {% endblock %}
 {% block body %}
@@ -69,8 +70,6 @@
                     </textarea>
                 </fieldset>
                 <div class="alert-error">{{ form_errors(form.message) }}</div>
-                <input required type="hidden" value="{{formation.name}}" name="{{ field_name(form.formation) }}">
-
                 <input type="submit" value="S'inscrire">
             </form>
         </div>

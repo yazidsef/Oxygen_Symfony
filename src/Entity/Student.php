@@ -31,10 +31,6 @@ class Student
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[Assert\NotBlank(message: 'Entrez votre message svp')]
-    #[ORM\Column(length: 1000)]
-    private ?string $message = null;
-
     #[Assert\NotBlank(message: 'Entrez votre numéro de téléphone svp')]
     #[ORM\Column]
     private ?int $tel = null;
@@ -57,9 +53,6 @@ class Student
     #[ORM\Column(length: 150)]
     private ?string $formation = null;
 
-    #[ORM\OneToMany(mappedBy: 'student', targetEntity: NewMessage::class)]
-    private Collection $newMessages;
-
     #[ORM\OneToOne(mappedBy: 'student', cascade: ['persist', 'remove'])]
     private ?StudentReview $studentReview = null;
 
@@ -68,7 +61,6 @@ class Student
 
     public function __construct()
     {
-        $this->newMessages = new ArrayCollection();
         $this->applications = new ArrayCollection();
     }
 
@@ -112,19 +104,6 @@ class Student
 
         return $this;
     }
-
-    public function getMessage(): ?string
-    {
-        return $this->message;
-    }
-
-    public function setMessage(string $message): static
-    {
-        $this->message = $message;
-
-        return $this;
-    }
-
 
     public function getTel(): ?int
     {
@@ -198,65 +177,8 @@ class Student
         return $this;
     }
 
-    /**
-     * @return Collection<int, NewMessage>
-     */
-    public function getNewMessages(): Collection
-    {
-        return $this->newMessages;
-    }
-
-    public function addNewMessage(NewMessage $newMessage): static
-    {
-        if (!$this->newMessages->contains($newMessage)) {
-            $this->newMessages->add($newMessage);
-            $newMessage->setStudent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeNewMessage(NewMessage $newMessage): static
-    {
-        if ($this->newMessages->removeElement($newMessage)) {
-            // set the owning side to null (unless already changed)
-            if ($newMessage->getStudent() === $this) {
-                $newMessage->setStudent(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getStudentReview(): ?StudentReview
     {
         return $this->studentReview;
-    }
-
-    /**
-     * @return Collection<int, Application>
-     */
-    public function getApplications(): Collection
-    {
-        return $this->applications;
-    }
-
-    public function addApplication(Application $application): static
-    {
-        if (!$this->applications->contains($application)) {
-            $this->applications->add($application);
-            $application->addStudent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeApplication(Application $application): static
-    {
-        if ($this->applications->removeElement($application)) {
-            $application->removeStudent($this);
-        }
-
-        return $this;
     }
 }

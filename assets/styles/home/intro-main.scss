@@ -1,0 +1,123 @@
+.intro-01 {
+    background-color: rgba(67, 159, 212, 0.11); 
+    max-height: 300px;
+    display: flex;
+    padding: 0 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-01 .card-2 {
+    max-width: 800px;
+    padding: 1rem 2rem;
+    text-align: left;
+}
+
+.intro-01 .card-2 h2 {
+    margin: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text-color);
+}
+
+.intro-01 .card-2 p {
+    font-size: 0.8rem;
+}
+
+.intro-01 .img-intro-01 {
+    height: 19rem;
+    object-fit: cover;
+}
+
+
+
+/* Responsive for mobile devices */
+
+@media screen and (max-width: 768px) {
+    .intro-01 {
+        flex-direction: column;
+        padding: 1rem 2rem;
+    }
+
+    .intro-01 .card-2 {
+        margin: 5rem 0;
+        padding: 1rem 1rem;
+    }
+
+    .intro-01 .img-intro-01 {
+        display: none;
+    }
+
+    .intro-01 .img-intro-02 {
+        display: none;
+    }
+}
+
+/* Section Intro 02 */
+
+.intro-02 {
+    max-height: 600px;
+    max-width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.star-container {
+    margin: 3rem 1rem;
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.intro-02 .star-container .star-02 {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background-color: var(--secondary);
+    padding: 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+}
+
+.intro-02 .star-container p {
+    color: var(--bg-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+/* Responsive for mobile devices */
+
+@media screen and (max-width: 768px) {
+    .intro-02 .star-container {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .intro-02 .star-container .star-02 {
+        margin: 1rem 0;
+    }
+}
+
+
+/* Section Intro 03 */
+
+.intro-01 .img-intro-02 {
+    height: 12rem;
+    padding: 2rem 5rem;
+}
+
+.intro-01 .img-intro-02:hover {
+    transform: scale(1.1);
+    transition: 0.5s ease-in-out;
+}
