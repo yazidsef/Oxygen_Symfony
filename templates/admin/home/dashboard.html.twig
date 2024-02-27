@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+{% block title %}Oxygen: Admin{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('adminHome') }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('adminHome') }}
+{% endblock %}
+{% block body %}
+    <section class="main-admin">
+        <div class="main-das">
+            {% include 'components/admin/nav-das.html.twig' %}
+            <div class="content-das">
+                <div class="left-content">
+                    <div class="slider-container">
+                        <h1>All Disciplines</h1>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                {% for discipline in disciplines %}
+                                    <div class="swiper-slide">
+                                        {% include 'components/admin/card-swiper.html.twig' with {'discipline': discipline} %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    <h1>All Students: {{ totalStudent }}</h1>
+                    <div class="student-das splide">
+                        <div class="splide__track">
+                            <ul class="splide__list containers">
+                                {% for student in students %}
+                                    <li class="splide__slide">
+                                        {% include 'components/admin/student-card.html.twig' with {'student': student} %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <h1>All Formations: {{ totalCourse }}</h1>
+                    <div id="course" class="course-das splide">
+                        <div class="splide__track">
+                            <ul class="splide__list containers">
+                                {% for course in courses %}
+                                    <li class="splide__slide">
+                                        {% include 'components/admin/course-card.html.twig' with {'course': course} %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <div class="applications">
+                        <div class="info-top">
+                            <h1>New Applicants</h1>
+                            <span class="notifications">
+                                <i class="fa-solid fa-bell"></i>
+                            </span>
+                        </div>
+                        <div class="applicants-container">
+                            {% for application in applications %}
+                                {% include 'components/admin/applicant-card.html.twig' with {'application': application} %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="applications second">
+                        <div class="info-top">
+                            <h1>Messages</h1>
+                            <span class="notifications">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                        </div>
+                        <div class="messages-container">
+                            {% for contact in contacts %}
+                                {% include 'components/admin/message-card.html.twig' with {'contact': contact} %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

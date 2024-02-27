@@ -1,0 +1,55 @@
+<nav class="main-menu">
+    <div>
+        <a href="/admin">
+            <div class="user-info">
+                <img src="{{ asset('build/images/oxygen_school_logo.png') }}" alt="logo" />
+                <p>Oxygen Admin</p>
+            </div>
+        </a>
+        <ul class="nav-list">
+            <li class="nav-item {% if title == 'Dashboard' %}active{% endif %}">
+                <a href="/admin">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item {% if title == 'Formation' %}active{% endif %}">
+                <a href="/admin/formation">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span class="nav-text">Formation</span>
+                </a>
+            </li>
+
+            <li class="nav-item {% if title == 'Students' %}active{% endif %}">
+                <a href="/admin/student">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="nav-text">Students</span>
+                </a>
+            </li>
+
+            <li class="nav-item {% if title == 'Applications' %}active{% endif %}">
+                <a href="#">
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span class="nav-text">Applications</span>
+                </a>
+            </li>
+
+            <li class="nav-item {% if title == 'Message' %}active{% endif %}">
+                <a href="/admin/message">
+                    <i class="fa-solid fa-comments"></i>
+                    <span class="nav-text">Message</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="nav-list">
+        <li class="nav-item">
+            <a href="#">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="nav-text">Logout</span>
+            </a>
+        </li>
+    </ul>
+</nav>

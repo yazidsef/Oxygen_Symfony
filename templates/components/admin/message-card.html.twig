@@ -1,0 +1,7 @@
+<div class="applicant-line">
+    <img src="{{ contact.avatarImage }}" alt="profile">
+    <div class="applicant-info">
+      <span>{{ contact.contact.firstName }} {{ contact.contact.lastName }}</span>
+      <p class="message-subtext">{{ contact.contact.message|slice(0, 40) }}...</p>
+    </div>
+</div>
