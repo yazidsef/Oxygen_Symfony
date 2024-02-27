@@ -13,18 +13,15 @@ class ContactMessageFixtures extends Fixture
     {
         $faker = Factory::create();
         $messages = require 'src/Data/NewMessages.php';
-        $avatars = require 'src/Data/Avatars.php';
 
         foreach ($messages as $i => $message) {
-            $avatarUrl = $avatars[$i % count($avatars)];
 
             $contact = (new Contact())
                 ->setFirstName($faker->firstName)
                 ->setLastName($faker->lastName)
                 ->setPhone(123456789)
                 ->setEmail($faker->email)
-                ->setMessage($message['message'])
-                ->setAvatarImage($avatarUrl['avatar_image']);
+                ->setMessage($message['message']);
 
             $manager->persist($contact);
         }

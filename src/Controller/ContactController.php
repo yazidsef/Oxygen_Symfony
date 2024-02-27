@@ -19,10 +19,8 @@ class ContactController extends AbstractController
         ValidatorInterface $validator,
         EntityManagerInterface $entityManager
     ): Response {
-        $avatars = require $this->getParameter('kernel.project_dir') . '/src/Data/Avatars.php';
         // creation nouveau contact
-        $contact = (new Contact())
-            ->setAvatarImage($avatars[rand(0, count($avatars) - 1)]['avatar_image']);
+        $contact = new Contact();
 
         // creation formulaire de contact
         $contactForm = $this->createForm(ContactFormulaireType::class, $contact);

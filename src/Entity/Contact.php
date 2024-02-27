@@ -14,9 +14,6 @@ class Contact
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $avatarImage = null;
-
     #[ORM\Column(length: 150)]
     private ?string $firstName = null;
 
@@ -35,18 +32,6 @@ class Contact
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getAvatarImage(): ?string
-    {
-        return $this->avatarImage;
-    }
-
-    public function setAvatarImage(string $avatarImage): static
-    {
-        $this->avatarImage = $avatarImage;
-
-        return $this;
     }
 
     public function getFirstName(): ?string

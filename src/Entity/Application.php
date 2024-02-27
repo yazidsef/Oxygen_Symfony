@@ -17,9 +17,6 @@ class Application
     #[ORM\JoinColumn(name: 'course_id', referencedColumnName: 'id')]
     private ?Course $course = null;
 
-    #[ORM\Column]
-    private ?string $avatarImage = null;
-
     #[ORM\Column(length: 150)]
     private ?string $firstName = null;
 
@@ -57,18 +54,6 @@ class Application
     public function setCourse(?Course $course): static
     {
         $this->course = $course;
-
-        return $this;
-    }
-
-    public function getAvatarImage(): ?string
-    {
-        return $this->avatarImage;
-    }
-
-    public function setAvatarImage(string $avatarImage): static
-    {
-        $this->avatarImage = $avatarImage;
 
         return $this;
     }

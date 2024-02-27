@@ -21,10 +21,8 @@ class FormationController extends AbstractController
         ValidatorInterface $validator,
         EntityManagerInterface $entityManager
     ): Response {
-        $avatars = require $this->getParameter('kernel.project_dir') . '/src/Data/Avatars.php';
         $application = (new Application())
             ->setCourse($course)
-            ->setAvatarImage($avatars[rand(0, count($avatars) - 1)]['avatar_image'])
             ->setStatus('pending');
 
         $form = $this->createForm(FormulaireType::class, $application);
