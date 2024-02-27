@@ -16,16 +16,16 @@ class AdminHomeController extends AbstractController
 {
     #[Route('/admin', name: 'app_admin_home')]
     public function index(
-        DisciplineRepository $disciplineRepository,
+        DisciplineRepository $discipline,
         CourseRepository $courseRepository,
         StudentRepository $studentRepository,
         ContactRepository $contactRepository,
-        ApplicationRepository $applicationRepository
+        ApplicationRepository $application
     ): Response {
         $avatars = require __DIR__ . '/../Data/Avatars.php';
         shuffle($avatars);
         // load all disciplines
-        $disciplines = $disciplineRepository->findAll();
+        $disciplines = $discipline->findAll();
         // load all students
         $students = $studentRepository->findAll();
         $totalStudent = count($students);
@@ -42,7 +42,7 @@ class AdminHomeController extends AbstractController
             if (!empty($avatars)) {
                 // Generate random avatar image for each contact
                 $randomAvatar = array_shift($avatars)['avatar_image'];
-                
+
                 // Add contact data with random avatar image to the new array
                 $newContacts[] = [
                     'contact' => $contact,
@@ -53,17 +53,17 @@ class AdminHomeController extends AbstractController
         // Reset the array pointer to the beginning
         reset($avatars);
         // load all applications
-        $applications = $applicationRepository->findAll();
+        $applications = $application->findAll();
         // create a new applications array with random avatar
         $newApplications = [];
         $recentApplications = array_slice(array_reverse($applications), 0, 6);
-        
+
         foreach ($recentApplications as $application) {
             // Generate random avatar image for each application
             if (!empty($avatars)) {
                 // Generate random avatar image for each application
                 $randomAvatar = array_shift($avatars)['avatar_image'];
-                
+
                 // Add application data with random avatar image to the new array
                 $newApplications[] = [
                     'application' => $application,
