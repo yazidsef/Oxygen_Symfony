@@ -61,12 +61,23 @@ class AdminCourseController extends AbstractController
                         ]
                 );
             }
-            // Persist and flush the course entity
             $entityManager->persist($course);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_admin_course');
         }
+
+        // Delete course
+        $courseId = $request->query->getInt('courseId', 0);
+        if ($courseId) {
+            $course = $courseRepository->findOneBy(['id' => $courseId]);
+            $entityManager->remove($course);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_admin_course');
+        }
+
+        // filter courses which related to application
+        
 
         return $this->render('admin/formation/formation.html.twig', [
             'title' => 'Formation',
