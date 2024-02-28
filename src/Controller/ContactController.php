@@ -24,15 +24,15 @@ class ContactController extends AbstractController
 
         // creation formulaire de contact
         $contactForm = $this->createForm(ContactFormulaireType::class, $contact);
-        
+
         //  Traitement de la requete
         $contactForm->handleRequest($request);
-        
+
         //  Verification de la soumission du formulaire
         if ($contactForm->isSubmitted()) {
             //  Validation des données
             $errors = $validator->validate($contact);
-            
+
             //  Si il y a des erreurs
             if (count($errors) > 0) {
                 $this->addFlash('error', 'Veuillez corriger les erreurs dans le formulaire.');
@@ -43,7 +43,7 @@ class ContactController extends AbstractController
                 //  Message de confirmation
                 $this->addFlash('success', 'Merci ! nous avons bien reçu votre message, 
                 nous vous répondrons dans les plus brefs délais.');
-                
+
                 //redirection vers la page de contact
                 return $this->redirectToRoute('app_contact');
             }

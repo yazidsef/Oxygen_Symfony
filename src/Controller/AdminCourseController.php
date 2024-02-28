@@ -32,7 +32,7 @@ class AdminCourseController extends AbstractController
         $course = new Course();
         $form = $this->createForm(CourseType::class, $course);
         $form->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             $course->setDiscipline($disciplineRepository->find($form->get('discipline')->getData()));
             $entityManager->persist($course);
