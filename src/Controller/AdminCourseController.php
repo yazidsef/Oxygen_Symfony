@@ -9,11 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\DisciplineRepository;
-use App\Repository\ApplicationRepository;
 use App\Repository\CourseRepository;
-use App\Repository\StudentRepository;
 use App\Form\CourseType;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class AdminCourseController extends AbstractController
 {
@@ -22,10 +19,6 @@ class AdminCourseController extends AbstractController
         Request $request,
         DisciplineRepository $disciplineRepository,
         CourseRepository $courseRepository,
-        // Remove unused variables
-        // StudentRepository $studentRepository,
-        // ApplicationRepository $application,
-        ValidatorInterface $validator,
         EntityManagerInterface $entityManager
     ): Response {
         $disciplineId = $request->query->getInt('discipline_id', 0);
@@ -39,28 +32,9 @@ class AdminCourseController extends AbstractController
         $course = new Course();
         $form = $this->createForm(CourseType::class, $course);
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
-            // get discipline id from the form
-            $disId = $form->get('discipline')->getData();
-            if ($disId) {
-                $discipline = $disciplineRepository->findOneBy(['id' => $disId]);
-                $course->setDiscipline($discipline);
-            }
-            $errors = $validator->validate($course);
-            if (count($errors) > 0) {
-                return $this->render(
-                    'admin/formation/formation.html.twig',
-                    [
-                        'title' => 'Formation',
-                        'courses' => $courses,
-                        'disciplines' => $disciplines,
-                        'disciplineId' => $disciplineId,
-                        'totalCourses' => $totalCourses,
-                        'form' => $form->createView(),
-                        'errors' => $errors
-                        ]
-                );
-            }
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $course->setDiscipline($disciplineRepository->find($form->get('discipline')->getData()));
             $entityManager->persist($course);
             $entityManager->flush();
 
@@ -76,16 +50,13 @@ class AdminCourseController extends AbstractController
             return $this->redirectToRoute('app_admin_course');
         }
 
-        // filter courses which related to application
-
-
         return $this->render('admin/formation/formation.html.twig', [
             'title' => 'Formation',
             'courses' => $courses,
             'disciplines' => $disciplines,
             'disciplineId' => $disciplineId,
             'totalCourses' => $totalCourses,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 }
