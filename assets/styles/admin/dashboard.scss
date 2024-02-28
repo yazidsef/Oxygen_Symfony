@@ -1,0 +1,314 @@
+.content-das {
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+
+.left-content {
+    padding: 30px 20px;
+    color: #e5e5e5;
+}
+
+.left-content h1 {
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* SLIDER */
+
+.slider-container {
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.swiper {
+    width: 100%;
+    padding: 16px 0 20px;
+    margin-bottom: 30px;
+}
+
+.swiper-slide {
+    position: relative;
+    width: 480px;
+}
+
+.swiper-slide img {
+    border-radius: 20px;
+    height: 300px;
+    width: 400px;
+    object-fit: cover;
+    border: 2px solid rgba(159, 160, 168, 0.5);
+}
+
+.swiper-pagination {
+    --swiper-pagination-bottom: -5px;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffffe7;
+    transition: all 0.3s ease-in-out;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--secondary);
+    width: 18px;
+    border-radius: 8px;
+}
+
+.slide-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    row-gap: 12px;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 80%;
+    background: linear-gradient(
+    240deg,
+    transparent,
+    transparent,
+    rgba(38, 21, 149, 0.8)
+    );
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.slide-overlay h2 {
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
+    font-weight: 700;
+}
+
+.slide-overlay .dis-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    padding: 1rem 1rem;
+    background: #e9e6eb2a;
+    color: #e8e5e5;
+    border: 1px solid rgba(159, 160, 168, 0.4);
+    border-radius: 12px;
+    outline: 0;
+    font-size: clamp(0.7rem, 3vw, 1rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    transition: all 0.4s linear;
+}
+
+.slide-overlay .dis-icon:is(:hover, :focus-visible) {
+    background: #e9e6eb;
+    color: var(--secondary);
+}
+
+/* Containers of Student */
+
+.student-das {
+    height: 10rem;
+    overflow: hidden;
+}
+
+.containers {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+}
+
+.student-das h1 {
+    font-size: clamp(1rem, 2vw, 2rem);
+    margin-bottom: 24px;
+}
+
+.std-das {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+.std-das .ava {
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(169, 150, 253, 0.5);
+    width: 100px;
+    aspect-ratio: 1/1;
+    margin-bottom: 4px;
+    box-shadow: rgba(221, 221, 221, 0.3) 0px 6px 18px -3px,
+        rgba(221, 221, 221, 0.2) 0px -3px 0px inset;
+    transition: all 0.2s;
+}
+
+.std-das .ava:hover {
+    transform: scale(1.1);
+}
+
+.std-das p {
+    margin: 0;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    padding: 8px 0;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Containers of Course */
+
+.course-das {
+    height: 25rem;
+    overflow: hidden;
+}
+
+.card-course {
+    max-width: 350px;
+    height: 100%;
+    color: #fff;
+    background: rgba(188, 184, 198, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: inset 2px -2px 6px rgba(214, 214, 214, 0.2),
+        inset -3px 3px 3px rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    cursor: grab;
+}
+
+.course-container {
+    padding: 15px;
+}
+
+.course-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    object-fit: cover;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.course-container img:hover {
+    transform: scale(1.1);
+}
+
+.course-content {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.course-content h2 {
+    font-family: Nunito, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.course-info {
+    font-size: .8rem;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    width: auto;
+    line-height: 1.5;
+    opacity: 0.5;
+}
+
+.course-info:hover {
+    opacity: 1;
+}
+
+.course-info i {
+    margin-right: 8px;
+}
+
+/* RIGHT CONTENT */
+
+.right-content {
+    display: grid;
+    grid-template-rows: 60% 40%;
+    border-radius: 0 15px 15px 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 30px 20px;
+    color: #e5e5e5;
+}
+
+/* Applications part go here */
+
+.applications .info-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.applications .info-top .notifications {
+    display: inline-block;
+	position: relative;
+}
+
+.applications .info-top .notifications::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    right: -3px;
+    width: 8px;
+    height: 8px;
+    background: var(--secondary);
+    border: solid 1px #01081f;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50%;
+}
+
+/* Card of Applications */
+
+.applicant-line {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 12px;
+}
+.applicant-line img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    flex-shrink: 0;
+    border: 2px solid rgba(159, 160, 168, 0.5);
+    box-shadow: rgba(221, 221, 221, 0.3) 0px 6px 18px -3px,
+        rgba(221, 221, 221, 0.2) 0px -3px 0px inset;
+}
+
+.applicant-info span {
+    font-size: 14px;
+    line-height: 16px;
+}
+.applicant-info p {
+    margin: 4px 0;
+    font-size: 12px;
+    line-height: 16px;
+    opacity: 0.5;
+}
+
+/* Messages part go here */
+
+.right-content .second {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Card message */
+
+.message-subtext {
+    margin: 4px 0 0 0;
+    text-overflow: ellipsis;
+}

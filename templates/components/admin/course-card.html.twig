@@ -1,0 +1,20 @@
+<div class="card-course">
+    <div class="course-container">
+        <img src="{{ course.urlImage }}" alt="course" />
+        <div class="course-content">
+            <h2>{{ course.name|slice(0, 15) }}</h2>
+            <div class="course-info">
+                <i class="fa-solid fa-hourglass-half"></i>
+                <p class="duration">{{ course.duration }}</p>
+            </div>
+            <div class="course-info">
+                <i class="fa-solid fa-calendar-days"></i>
+                <p>{{ course.date|date('M/y') }}</p>
+            </div>
+            <div class="course-info">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>{{ course.location }}</p>
+            </div>
+        </div>
+    </div>
+</div>

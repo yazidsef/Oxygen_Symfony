@@ -24,6 +24,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "@splidejs/splide": "^4.1.4"
+        "@splidejs/splide": "^4.1.4",
+        "swiper": "^11.0.7"
     }
 }
