@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block title %}Oxygen: Admin{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('adminCourse') }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('adminCourse') }}
+{% endblock %}
+{% block body %}
+    <section class="main-admin">
+        <div class="main-das">
+            {% include 'components/admin/nav-das.html.twig' %}
+            <div class="course-container">
+                <div class="course-header">
+                    <h1>Nos formation</h1>
+                    <h2>Total: {{ totalCourses }}</h2>
+                </div>
+                <div class="course-filters">
+                    <form class="course-filters" action="{{ app.request.uri }}" method="GET">
+                        <a href="/admin/formation" class="filter-button {% if disciplineId == 0 %}active{% endif %}">All <i class="fa-solid fa-circle-check"></i></a>
+                        {% for discipline in disciplines %}
+                            <button class="filter-button {% if disciplineId == discipline.id %}active{% endif %}" name="discipline_id" value="{{ discipline.id }}">
+                                {{ discipline.name }}
+                                <i class="fa-solid fa-circle-check"></i>
+                            </button>
+                        {% endfor %}
+                    </form>
+                </div>
+                <div class="add-course">
+                    <a class="btn-add" href="#add-course"><i class="fa-solid fa-circle-plus"></i></i>Create</a>
+                </div>
+                {% include 'components/admin/modal-add-course.html.twig' %}
+                <div class="course-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Location</th>
+                                <th>Begin</th>
+                                <th>Duration</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for course in courses %}
+                                <tr>
+                                    <td><img src="{{ course.urlImage }}" alt="{{ course.name }}" width="100"></td>
+                                    <td>{{ course.name }}</td>
+                                    <td>{{ course.description|slice(0, 40) }}</td>
+                                    <td>{{ course.location }}</td>
+                                    <td>{{ course.date|date('M/y') }}</td>
+                                    <td>{{ course.duration }}</td>
+                                    <td class="action">
+                                        <a class="btn-edit" href="#edit-course-{{ course.id }}">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+                                        {% include 'components/admin/modal-edit-course.html.twig' with {'course': course, 'modal_id': 'edit-course-' ~ course.id} %}
+                                        <form action="/admin/formation" method="GET">
+                                            <button class="btn-delete" type="submit" name="courseId" value="{{ course.id }}"><i class="fa-solid fa-trash-can"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

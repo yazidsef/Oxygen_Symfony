@@ -31,24 +31,18 @@ class FormationController extends AbstractController
         if ($form->isSubmitted()) {
             $errors = $validator->validate($application);
             if (count($errors) > 0) {
-                return $this->render(
-                    'formation/index.html.twig',
-                    [
-                        'formation' => $course,
-                        'form' => $form->createView(),
-                        'errors' => $errors
-                    ]
-                );
+                $this->addFlash('error', 'Veuillez corriger les erreurs dans le formulaire.');
+            } else {
+                $entityManager->persist($application);
+                $entityManager->flush();
+                return $this->redirectToRoute('app_discipline');
             }
-
-            $entityManager->persist($application);
-            $entityManager->flush();
-            return $this->redirectToRoute('app_discipline');
         }
 
         return $this->render('formation/index.html.twig', [
             'formation' => $course,
-            'form' => $form,
+            'form' => $form->createView(),
+            'errors' => isset($errors) ? $errors : [],
         ]);
     }
 }

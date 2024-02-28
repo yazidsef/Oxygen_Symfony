@@ -1,0 +1,59 @@
+table { 
+	width: 100%; 
+	border-collapse: collapse; 
+	margin:50px auto;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+tr:nth-of-type(odd) { 
+	background: #e9e6eb2a; 
+}
+
+th { 
+	background: var(--secondary);
+    opacity: 0.5;
+	color: white;
+	font-weight: bold; 
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+td { 
+    padding: 10px; 
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-align: left;
+	color: white;
+}
+
+td img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    object-fit: cover;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.action {
+    align-items: center;
+}
+
+.action button,
+.action a {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(200, 187, 255, 0.6);
+}
+
+.action .btn-edit i {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: green;
+}
+
+.action .btn-delete {
+    color: rgba(223, 65, 65, 0.799);
+}
