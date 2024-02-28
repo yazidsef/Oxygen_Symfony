@@ -77,7 +77,7 @@ class AdminCourseController extends AbstractController
         }
 
         // filter courses which related to application
-        
+
 
         return $this->render('admin/formation/formation.html.twig', [
             'title' => 'Formation',
