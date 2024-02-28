@@ -91,6 +91,7 @@ form .course__details .input__box {
     border: 1px solid rgba(159, 160, 168, 0.5);
     border-radius: 5px;
     background-color: #1e1e1e;
+    color: white;
 }
 
 .input__box input:focus,
@@ -101,6 +102,7 @@ form .course__details .input__box {
 .input__box textarea:valid
 {
     border-color: var(--main-purple);
+    color: white;
 }
 
 .course__details .input__box .category {
