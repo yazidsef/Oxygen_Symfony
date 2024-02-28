@@ -26,7 +26,7 @@ class AdminCourseController extends AbstractController
             $courseRepository->findByDisciplineId($disciplineId) :
             $courseRepository->findAll();
         $disciplines = $disciplineRepository->findAll();
-        $totalCourses = $courseRepository->count([]);
+        $totalCourses = count($courses);
 
         // Create course and edit course
         $course = new Course();
