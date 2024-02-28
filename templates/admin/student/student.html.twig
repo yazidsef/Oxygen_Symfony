@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block title %}Oxygen: Admin{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('adminStudent') }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('adminStudent') }}
+{% endblock %}
+{% block body %}
+    <section class="main-admin">
+        <div class="main-das">
+            {% include 'components/admin/nav-das.html.twig' %}
+            <div class="course-container">
+                <div class="course-header">
+                    <h1>Nos Eleves</h1>
+                    <h2>Total: {{ totalStudents }}</h2>
+                </div>
+                <div class="add-course">
+                    <a class="btn-add" href="#add-course"><i class="fa-solid fa-circle-plus"></i></i>Create</a>
+                </div>
+                {# {% include 'components/admin/modal-add-course.html.twig' %} #}
+                <div class="course-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Email</th>
+                                <th>Degree</th>
+                                <th>Formation</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for student in students %}
+                                <tr>
+                                    <td><img src="{{ student.avatarImage }}" alt="{{ student.firstName }}" width="100"></td>
+                                    <td>{{ student.firstName }}</td>
+                                    <td>{{ student.lastName }}</td>
+                                    <td>{{ student.email }}</td>
+                                    <td>{{ student.degree }}</td>
+                                    <td>{{ student.formation }}</td>
+                                    <td class="action">
+                                        <a class="btn-edit" href="#edit-student-{{ student.id }}">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+                                        {# {% include 'components/admin/modal-edit-course.html.twig' with {'course': course, 'modal_id': 'edit-course-' ~ course.id} %} #}
+                                        <form action="/admin/formation" method="GET">
+                                            <button class="btn-delete" type="submit" name="studentId" value="{{ student.id }}"><i class="fa-solid fa-trash-can"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

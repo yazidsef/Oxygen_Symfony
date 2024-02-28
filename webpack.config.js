@@ -38,6 +38,7 @@ Encore
     .addEntry('discipline', './assets/discipline.js')
     .addEntry('adminHome', './assets/adminHome.js')
     .addEntry('adminCourse', './assets/adminCourse.js')
+    .addEntry('adminStudent', './assets/adminStudent.js')
 
 
 

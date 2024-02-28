@@ -45,10 +45,8 @@
                 <fieldset>
                     <legend>Votre prénom : *</legend>
                     <input required name="{{ field_name(form.firstName) }}">
-                </fieldset>
-                <div class="error">
                     {{ form_errors(form.firstName) }}
-                </div>
+                </fieldset>
                 <fieldset>
                     <legend>Votre nom : *</legend>
                     <input required name="{{ field_name(form.lastName) }}">
