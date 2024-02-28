@@ -59,12 +59,12 @@ class AdminCourseController extends AbstractController
                         'form' => $form->createView(),
                         'errors' => $errors
                         ]
-                    );
-                }
+                );
+            }
             // Persist and flush the course entity
             $entityManager->persist($course);
             $entityManager->flush();
-    
+
             return $this->redirectToRoute('app_admin_course');
         }
 

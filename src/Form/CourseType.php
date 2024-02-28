@@ -64,9 +64,8 @@ class CourseType extends AbstractType
                     ]),
                 ]
             ])
-            ->add('date', DateType::class,[
+            ->add('date', DateType::class, [
                 'widget' => 'single_text',
-            ], [
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez ajouter une date valide !',
@@ -100,7 +99,10 @@ class CourseType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Course::class,
-            'disciplines' => [],
+            'disciplines' => [
+                'class' => Discipline::class,
+                'choice_label' => 'name',
+            ],
         ]);
     }
 }
