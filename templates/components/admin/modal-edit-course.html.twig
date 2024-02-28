@@ -1,0 +1,82 @@
+<div id="{{ modal_id }}" class="modal">
+    <div class="modal-content">
+        <h2>Edit course</h2>
+        <a class="close" href="#">&times;</a>
+        <form id="edit-course-form" method="POST" action="/admin/formation">
+            <input type="hidden" name="course-id" value="{{ course.id }}">
+            <div class="course__details">
+                <div class="input__box">
+                    <span class="details">Name</span>
+                    <input id="name-course" name="name-course" type="text" placeholder="{{ course.name }}" required>
+                </div>
+                <div class="input__box">
+                    <span class="details">Location</span>
+                    <input id="location" name="location" type="text" placeholder="{{ course.location }}" required>
+                </div>
+                <div class="input__box">
+                    <span class="details">Capacity</span>
+                    <input id="capacity" name="capacity" type="number" placeholder="{{ course.capacity }}" required>
+                </div>
+                <div class="input__box">
+                    <span class="details">Start Date</span>
+                    <input id="date" name="date-course" type="date" required>
+                </div>
+                <div class="input__box">
+                    <span class="details">Duration</span>
+                    <select name="duration" id="duration">
+                        <option value="1 mois" {% if course.duration == '1 mois' %} selected {% endif %}>1 mois</option>
+                        <option value="3 mois" {% if course.duration == '3 mois' %} selected {% endif %}>3 mois</option>
+                        <option value="5 mois" {% if course.duration == '5 mois' %} selected {% endif %}>5 mois</option>
+                        <option value="6 mois" {% if course.duration == '6 mois' %} selected {% endif %}>6 mois</option>
+                        <option value="8 mois" {% if course.duration == '8 mois' %} selected {% endif %}>8 mois</option>
+                        <option value="12 mois" {% if course.duration == '12 mois' %} selected {% endif %}>12 mois</option>
+                    </select>
+                </div>
+                <div class="input__box">
+                    <span class="details">Degree required</span>
+                    <select name="degree" id="degree">
+                        <option value="Bac" {% if course.degree == 'Bac' %} selected {% endif %}>Bac</option>
+                        <option value="Bac +2" {% if course.degree == 'Bac +2' %} selected {% endif %}>Bac +2</option>
+                        <option value="Bac +3" {% if course.degree == 'Bac +3' %} selected {% endif %}>Bac +3</option>
+                        <option value="Bac +5" {% if course.degree == 'Bac +5' %} selected {% endif %}>Bac +5</option>
+                    </select>
+                </div>
+                <div class="input__box">
+                    <span class="details">Disciplines</span>
+                    <select name="discipline" id="discipline">
+                        <option value="1" {% if course.discipline == '1' %} selected {% endif %}>Informatique</option>
+                        <option value="2" {% if course.discipline == '2' %} selected {% endif %}>Design</option>
+                        <option value="3" {% if course.discipline == '3' %} selected {% endif %}>Finance</option>
+                        <option value="4" {% if course.discipline == '4' %} selected {% endif %}>Marketing</option>
+                        <option value="5" {% if course.discipline == '5' %} selected {% endif %}>Santé</option>
+                    </select>
+                </div>
+                <div class="input__box">
+                    <span class="details">Support</span>
+                    <div class="category">
+                        <label>
+                            <input type="radio" name="support" value="100">
+                            <span>100%</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="support">
+                            <span>Not include</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="course__description">
+                <div class="input__box">
+                    <span id="courseImg" class="details">Image</span>
+                    <img id="preview-image-{{ course.id }}" src="{{ course.urlImage }}" alt="Preview Image">
+                    <input type="text" id="image-url-input-{{ course.id }}" name="image-url" placeholder="Insert Image URL" oninput="updateImagePreview(this.value, '{{ course.id }}')" required>
+                </div>
+                <div class="input__box">
+                    <span class="details">Description</span>
+                    <textarea id="courseDes" name="courseDes" placeholder="{{ course.description }}" required></textarea>
+                </div>
+            </div>
+            <button class="btn-course" type="submit">Edit Course</button>
+        </form>
+    </div>
+</div>
