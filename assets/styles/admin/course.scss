@@ -57,6 +57,11 @@
     display: none;
 }
 
+.filter-button.active {
+    background: #e9e6eb;
+    color: #000;
+}
+
 .filter-button.active i {
     display: inline-block;
     margin-left: 5px;
