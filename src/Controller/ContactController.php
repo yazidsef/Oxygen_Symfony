@@ -34,7 +34,8 @@ class ContactController extends AbstractController
             $entityManager->flush();
 
             // Add success flash message
-            $this->addFlash('success', 'Merci ! Nous avons bien reçu votre message, nous vous répondrons dans les plus brefs délais.');
+            $this->addFlash('success', 'Merci ! Nous avons bien reçu votre message, 
+            nous vous répondrons dans les plus brefs délais.');
 
             // Redirect to the contact page to clear the form
             return $this->redirectToRoute('app_contact');
