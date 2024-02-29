@@ -9,8 +9,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class ContactFormulaireType extends AbstractType
 {
@@ -41,14 +43,16 @@ class ContactFormulaireType extends AbstractType
                     ]),
                 ]
             ])
-            ->add('phone', TextType::class, [
-
-
+            ->add('phone', TelType::class, [
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez un numéro de téléphone valide !',
                     ]),
-                ]
+                    new Regex([
+                        'pattern' => '/^\d{10}$/',
+                        'message' => 'Le numéro de téléphone doit avoir exactement 10 chiffres.',
+                    ]),
+                ],
             ])
             ->add('message', TextareaType::class, [
 
@@ -63,7 +67,7 @@ class ContactFormulaireType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Contact::class
+            'data_class' => Contact::class,
         ]);
     }
 }

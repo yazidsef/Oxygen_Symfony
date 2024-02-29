@@ -32,64 +32,30 @@
                 </div>
             </section>          
         </div>
+        
         <h2 class="center">Contactez-nous</h2>    
         <p class="parag">Vous avez besoin de renseignements supplémentaires concernant nos formations ?, n'hésitez pas à nous contacter. Nos conseillers formations sont disponibles du
         lundi au vendredi, de 9h à 19h.</p>
         <div id="formContact">
             {% for message in app.flashes('success') %}
-                <div class="formValid">
-                    {{ message }}
-                </div>
+            <div class="formValid">
+                <img src="{{ asset('build/images/oxygen_school_logo.png') }}" alt="logo">
+                <p>{{ message }}!</p>
+            </div>
             {% endfor %}
-            <form method="post" action="" class="form">
-                <fieldset>
-                    <legend>Votre prénom : *</legend>
-                    <input required name="{{ field_name(form.firstName) }}">
-                    {{ form_errors(form.firstName) }}
-                </fieldset>
-                <fieldset>
-                    <legend>Votre nom : *</legend>
-                    <input required name="{{ field_name(form.lastName) }}">
-                </fieldset>
-                <div class="error">
-                    {{ form_errors(form.lastName) }}
-                </div>
-                <fieldset>
-                    <legend>Votre email : *</legend>                    
-                    <input required name="{{ field_name(form.email) }}">
-                </fieldset>
-                <div class="error">
-                    {{ form_errors(form.email) }}
-                </div>
-                <fieldset>
-                    <legend>Votre numéro de téléphone : *</legend>                    
-                    <input required name="{{ field_name(form.phone) }}">
-                </fieldset>
-                <div class="error">
-                    {{ form_errors(form.phone) }}
-                </div>
-                <fieldset>
-                    <legend>Message</legend>
-                    <textarea name="{{ field_name(form.message) }}" id="" cols="30" rows="10"></textarea>
-                </fieldset>
-                <div class="error">
-                    {{ form_errors(form.message) }}
-                </div>
+            <form method="post" action="" class="form" novalidate>
+                {{ form_start(form) }}
+                {% if form.message.vars.errors|length > 0 %}
+                    {% for error in form.message.vars.errors %}
+                        <span class="error-message">{{ error.message }}</span>
+                    {% endfor %}
+                {% endif %}
+                {{ form_widget(form) }}
                 <div class="button">
-                    <input type="submit" value="Envoyer">
+                    <input id="btn-contact" type="submit" value="Envoyer">
                 </div>
+                {{ form_end(form) }}
             </form>
-            {% if success is defined %}
-                <div class="messForm">
-                    <p class="formValid">{{ message }}</p> {{dump(success)}}
-                </div>
-            {% endif %} 
-            {% for message in app.flashes('success') %}
-                {{dump ('success')}}
-                <div class="formValid">
-                    {{ message }}
-                </div>
-            {% endfor %}
         </div>
         <h2 class="center">L'équipe d'Oxygen School</h2>
         <p class='parag'>Oxygen School est un centre active et unique en son genre. Créé et porté par trois développeurs web.</br>

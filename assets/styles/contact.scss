@@ -8,7 +8,6 @@
 }
 
 .section {
-
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -103,103 +102,173 @@
 
 /* css formu */
 
-.form {
-    width: 100%;
-    margin: 0 auto;
+#formContact {
+    width: 425px;
+    background:
+        linear-gradient(
+        rgba(35,43,85,0.75),
+        rgba(35,43,85,0.95));
+    margin-left: auto;
+    margin-right: auto;
+    border-top: solid 2px rgba(255,255,255,.5);
+    border-radius: 5px;
+    box-shadow: 0px 2px 7px rgba(0,0,0,0.2);
+    overflow: hidden;
 }
 
-form {
-    display: grid;
-    gap: 1.8rem;
-}
-
-form input {
-    border: none;
-    width: 100%;
-    font-size: 1.3rem;
-    background-color: #f7f7f7;
-}
-
-form fieldset {
-    padding: 1rem;
-    border: 1px solid #23A6F0;
-}
-
-form fieldset legend {
-    position: relative;
-    padding-right: 3.5rem;
-    left: 2rem;
-}
-
-form input:focus {
-    outline: none;
-}
-
-form input[type="submit"] {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #67c6fd;
-    width: 140px;
+.formValid {
+    background:
+        linear-gradient(
+        rgba(35,43,85,0.75),
+        rgba(35,43,85,0.95));
+    height: 650px;
+    width: 410px;
+    border-top: solid 2px rgba(255,255,255,.5);
+    border-radius: 5px;
+    box-shadow: 0px 2px 7px rgba(0,0,0,0.2);
+    color: var(--secondary);
     padding: 10px;
-    border-radius: 10px;
-    color: var(--white-color);
-    font-weight: var(--font-weight);
-    margin: 0 auto;
-    transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, padding 0.3s ease-in-out;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 20;
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-form input[type="submit"]:hover {
-    background-color: #57bffb;
-    box-shadow: 3px 5px 5px 0px rgb(189, 188, 188);
-    cursor: pointer;
-    padding: 11px;
+.formValid img {
+    width: 100px;
+    height: 100px;
+    margin-top: 150px;
 }
 
-form fieldset textarea {
-    text-align: left;
+.formValid p {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.form {
+    width: 330px;
+    font-size: 16px;
+    font-weight: 300;
+    padding-left: 37px;
+    padding-right: 37px;
+    padding-top: 40px;
+    transition: opacity .5s ease, transform .5s ease;
+}
+
+.form label{
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    color: rgba(255,255,255,.7);
+    display: block;
+}
+
+.form input, textarea{
+    width: 330px;
+    padding: 10px;
+    font-size: 16px;
     border: none;
-    resize: none;
-    width: 100%;
-    overflow: auto;
-    background-color: var(--primary-color);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background: rgba(255,255,255,.2);
+    color: #fff;
 }
 
-form fieldset:focus {
-    border: 3px solid black;
+:focus {outline: none;
 }
 
-form fieldset textarea:focus {
-    outline: none;
-    border: none;
-    font-size: 1rem;
-}
+.form input:focus, textarea:focus {
+    background: rgba(255,255,255,.3);
+    border: none; 
+    transition: background .5s ease;
+ }
 
-.error {
+.error-message {
     color: red;
     border-bottom: 50%;
     margin-top: 1px;
     margin-bottom: 1px;
 }
 
-
-
-.formValid {
-    color: green;
-    font-style: italic;
-    font-size: 1.2rem;
-    font-weight: normal;
-    font-family: Tahoma;
-
+.form ul li {
+    list-style: none;
+    color: red;
+    font-size: .8rem;
+    font-weight: italic;
 }
 
-
-::placeholder {
-    color: rgb(171, 171, 220);
-    font-size: 1rem;
-    font-style: oblique;
-
+.button {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
+
+#btn-contact {
+    display: flex;
+    justify-content: center;
+    width: 10rem;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.success {
+    width: 80%;
+    height: 150px;
+    text-align: center;
+    position: relative;
+    top: -890px;
+    left: 450px;
+    // opacity: .0;
+    transition: all .8s .4s ease;
+  }
+  
+  .success-left {
+    transform: translateX(-406px);
+    opacity: 1;
+  }
+  
+  .successtext {
+    color: #ffffff;
+      font-size: 16px;
+      font-weight: 300;
+    margin-top: -35px;
+    padding-left: 37px;
+    padding-right: 37px;
+  }
+  
+  #check path {
+      stroke: #ffffff;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-width: .85px;
+      stroke-dasharray: 60px 300px;
+      stroke-dashoffset: -166px;
+      fill: rgba(255,255,255,.0);
+      transition: stroke-dashoffset 2s ease .5s, fill 1.5s ease 1.0s;
+  }
+  
+  #check.checked path {
+      stroke-dashoffset: 33px;
+      fill: rgba(255,255,255,.03);
+  }
 
 @media screen and (min-width: 800px) and (max-width: 1200px) {
     .info {

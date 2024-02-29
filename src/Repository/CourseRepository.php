@@ -32,6 +32,18 @@ class CourseRepository extends ServiceEntityRepository
         ;
     }
 
+    // find all courses which related to a application
+    public function findByApplicationId(int $applicationId): array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.application = :val')
+            ->setParameter('val', $applicationId)
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Course[] Returns an array of Course objects
 //     */
