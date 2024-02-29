@@ -234,3 +234,55 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+// Make responsive for mobiles devices
+@media (max-width: 768px) {
+    .intro-01 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card_course p{
+        display: none;
+    }
+
+    .intro-01 .img-intro-02 {
+        margin-top: 2rem;
+    }
+
+    .intro-02 {
+        height: auto;
+    }
+
+    .intro-container {
+        max-width: 100%;
+    }
+
+    .intro-card {
+        display: flex;
+        flex-direction: column;
+        max-width: 50%;
+    }
+
+    .intro-info {
+        display: none;
+    }
+
+    .form-regis {
+        width: 100%;
+    }
+
+    .formValid {
+        width: 100%;
+    }
+
+    .form input, textarea {
+        width: 210px;
+    }
+    .button {
+        margin:0;
+        display: flex;
+        justify-content: center;
+        width: 250px;
+    }
+}

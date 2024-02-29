@@ -229,6 +229,10 @@
     margin-bottom: 20px;
 }
 
+.img1 i {
+    color: var(--secondary);
+}
+
 @media screen and (min-width: 800px) and (max-width: 1200px) {
     .info {
 
@@ -281,5 +285,33 @@
         display: flex;
         flex-direction: column;
         width: 85%;
+    }
+
+    .center {
+        font-size: 1.5rem;
+    }
+
+    .member-cards h3{
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .member-cards p{
+        display: none;
+    }
+
+    #formContact{
+        padding-right: 1rem;
+        width: 290px;
+    }
+
+    .form input, textarea {
+        width: 210px;
+    }
+    .button {
+        margin:0;
+        display: flex;
+        justify-content: center;
+        width: 250px;
     }
 }
