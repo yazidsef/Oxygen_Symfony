@@ -26,7 +26,7 @@ class ApplicationFixtures extends Fixture implements DependentFixtureInterface
                 ->setTel(123456789)
                 ->setEmail($faker->email)
                 ->setDegree($degrees[array_rand($degrees)])
-                ->setBirthday($faker->dateTimeBetween('-30 years', '-20 years'))
+                ->setAge(rand(18, 60))
                 ->setMessage($faker->text)
                 ->setStatus($statuses[array_rand($statuses)]);
 

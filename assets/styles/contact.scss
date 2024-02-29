@@ -229,47 +229,6 @@
     margin-bottom: 20px;
 }
 
-.success {
-    width: 80%;
-    height: 150px;
-    text-align: center;
-    position: relative;
-    top: -890px;
-    left: 450px;
-    // opacity: .0;
-    transition: all .8s .4s ease;
-  }
-  
-  .success-left {
-    transform: translateX(-406px);
-    opacity: 1;
-  }
-  
-  .successtext {
-    color: #ffffff;
-      font-size: 16px;
-      font-weight: 300;
-    margin-top: -35px;
-    padding-left: 37px;
-    padding-right: 37px;
-  }
-  
-  #check path {
-      stroke: #ffffff;
-      stroke-linecap:round;
-      stroke-linejoin:round;
-      stroke-width: .85px;
-      stroke-dasharray: 60px 300px;
-      stroke-dashoffset: -166px;
-      fill: rgba(255,255,255,.0);
-      transition: stroke-dashoffset 2s ease .5s, fill 1.5s ease 1.0s;
-  }
-  
-  #check.checked path {
-      stroke-dashoffset: 33px;
-      fill: rgba(255,255,255,.03);
-  }
-
 @media screen and (min-width: 800px) and (max-width: 1200px) {
     .info {
 

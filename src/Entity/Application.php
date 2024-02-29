@@ -23,7 +23,7 @@ class Application
     #[ORM\Column(length: 150)]
     private ?string $lastName = null;
 
-    #[ORM\Column(type: 'integer', length: 10)]
+    #[ORM\Column(type: 'integer', length: 20)]
     private ?int $tel = null;
 
     #[ORM\Column(length: 255)]
@@ -32,8 +32,8 @@ class Application
     #[ORM\Column(length: 150)]
     private ?string $degree = null;
 
-    #[ORM\Column(type: 'datetime')]
-    private ?\DateTimeInterface $birthday = null;
+    #[ORM\Column(type: 'integer')]
+    private ?int $age = null;
 
     #[ORM\Column(type: 'text')]
     private ?string $message = null;
@@ -118,14 +118,14 @@ class Application
         return $this;
     }
 
-    public function getBirthday(): ?\DateTimeInterface
+    public function getAge(): ?int
     {
-        return $this->birthday;
+        return $this->age;
     }
 
-    public function setBirthday(\DateTimeInterface $birthday): static
+    public function setAge(int $age): static
     {
-        $this->birthday = $birthday;
+        $this->age = $age;
 
         return $this;
     }
