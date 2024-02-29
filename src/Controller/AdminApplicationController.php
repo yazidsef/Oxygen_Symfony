@@ -13,9 +13,9 @@ class AdminApplicationController extends AbstractController
 {
     #[Route('/admin/application', name: 'app_admin_application')]
     public function index(
-        ApplicationRepository $applicationRepository,
+        ApplicationRepository $applicationRepos,
     ): Response {
-        $applications = $applicationRepository->findAll();
+        $applications = $applicationRepos->findAll();
         $totalApplications = count($applications);
 
         return $this->render('admin/application/application.html.twig', [
