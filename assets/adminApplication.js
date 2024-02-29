@@ -11,5 +11,3 @@ import './styles/admin/course.scss';
 import './styles/admin/table.scss';
 import './styles/admin/modal-course.scss';
 
-// start the Stimulus application
-import './bootstrap';

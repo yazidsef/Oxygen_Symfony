@@ -8,18 +8,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\ContactRepository;
 
 class AdminContactController extends AbstractController
 {
     #[Route('/admin/contact', name: 'app_admin_contact')]
     public function index(
         Request $request,
-        EntityManagerInterface $entityManager
+        ContactRepository $contactRepository,
     ): Response {
         $avatars = require __DIR__ . '/../Data/Avatars.php';
         shuffle($avatars);
 
-        $contacts = $entityManager->getRepository(Contact::class)->findAll();
+        $contacts = $contactRepository->findAll();
         $totalContacts = count($contacts);
 
         $newContacts = [];
