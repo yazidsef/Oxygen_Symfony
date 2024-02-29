@@ -14,9 +14,6 @@ import 'swiper/css/bundle';
 
 import Splide from '@splidejs/splide';
 
-// start the Stimulus application
-import './bootstrap';
-
 // set up first Swiper
 const swiper = new Swiper(".swiper", {
     effect: "coverflow",

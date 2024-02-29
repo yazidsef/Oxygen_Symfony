@@ -6,4 +6,8 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/formation.scss';
+import './styles/admin/main-admin.scss';
+import './styles/admin/course.scss';
+import './styles/admin/table.scss';
+import './styles/admin/modal-course.scss';
+

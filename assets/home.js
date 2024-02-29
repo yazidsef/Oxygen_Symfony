@@ -13,14 +13,7 @@ import './styles/home/intro-main.scss';
 import './styles/home/std-review.scss';
 import './styles/home/card-review.scss';
 
-
-
 import Splide from '@splidejs/splide';
-
-// start the Stimulus application
-import './bootstrap';
-
-
 
 // SETUP OPTION SLIDE SHOW
 new Splide( '.splide', {
