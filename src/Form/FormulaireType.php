@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Application;
+use Faker\Core\Number;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -11,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -43,14 +46,14 @@ class FormulaireType extends AbstractType
                     ]),
                 ]
             ])
-            ->add('tel', TelType::class, [
+            ->add('tel', NumberType::class, [
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez un numéro de téléphone valide !',
+                        'message' => 'Please enter a valid phone number!',
                     ]),
                     new Regex([
                         'pattern' => '/^\d{10}$/',
-                        'message' => 'Le numéro de téléphone doit avoir exactement 10 chiffres.',
+                        'message' => 'The phone number must have exactly 10 digits.',
                     ]),
                 ],
             ])
