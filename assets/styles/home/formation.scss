@@ -1,0 +1,19 @@
+.formation {
+    height: 25rem;
+    overflow: hidden;
+}
+
+.card-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// make responsive for mobile
+@media (max-width: 768px) {
+    .formation {
+        height: 18rem;
+    }
+}
+

@@ -1,0 +1,12 @@
+<div class="slide-overlay card-review">
+    <i class="fa-solid fa-quote-left"></i>
+    <p class="std-mess">{{ review.testimonial }}</p>
+    
+    <div class="user-container">
+        <img class="user-ava" src='{{ asset(review.student.avatarImage) }}' alt="avatar">
+        <div class="user-info">
+            <h3>{{ review.student.firstName }}</h3>
+            <p>{{ review.student.formation }}</p>
+        </div>
+    </div>
+</div>

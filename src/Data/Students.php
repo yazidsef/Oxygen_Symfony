@@ -16,17 +16,15 @@ return [
 
     ],
     [
-        'firstName' => 'Kevin',
-        'lastName' => 'Girault',
+        'firstName' => 'Bensa',
+        'lastName' => 'Uzumaki',
         'email' => 'kevin@gmail.com',
         'tel' => 1234567890,
         'formation' => 'Junior Dev Web',
         'birthday' => '1986-07-08',
         'degree' => 'Bac+3',
         'address' => 'Etrangers',
-        'avatar_image' => 'https://media.licdn.com/dms/image/D5603AQFzhJJ8v2K2QQ/' .
-                            'profile-displayphoto-shrink_800_800/0/' .
-                            '1685949560183?e=1711584000&v=beta&t=PLV-fVRuPbBUAdYOBGV1M3TFo-ao0k0nAEW-6jfBrOk',
+        'avatar_image' => 'https://i.postimg.cc/4xtvRRfL/Bensa.jpg',
     ],
     [
         'firstName' => 'Joël',
@@ -61,20 +59,18 @@ return [
         'birthday' => '1989-01-01',
         'degree' => 'Bac+2',
         'address' => 'Tours',
-        'avatar_image' => 'https://i.postimg.cc/66b3Cffp/Quentin.png',
+        'avatar_image' => 'https://i.postimg.cc/J4b4wRDd/vicky.jpg',
     ],
     [
-        'firstName' => 'Yazid',
-        'lastName' => 'Sefsaf',
-        'email' => 'Yazid@gmail.com',
+        'firstName' => 'Luxe',
+        'lastName' => 'Candy',
+        'email' => 'Luxe@gmail.com',
         'tel' => 1234567890,
         'formation' => 'Data Analyst',
         'birthday' => '1997-01-01',
         'degree' => 'Bac+3',
         'address' => 'Paris',
-        'avatar_image' => 'https://cdn.discordapp.com/attachments/1186683768640122982/' .
-                            '1187052343859089549/ayzd.jpg?ex=65c3a025&is=65b12b25&hm=' .
-                            '4fc40165ef44b2f148d9f1be816925f478fa227452980b207de6b157007b3af8&',
+        'avatar_image' => 'https://i.postimg.cc/SxWMnNb8/Luxe.png',
     ],
     [
         'firstName' => 'Julia',
@@ -150,10 +146,7 @@ return [
         'birthday' => '1996-01-01',
         'degree' => 'Bac+4',
         'address' => 'Lille',
-        'avatar_image' => 'https://cdn.discordapp.com/attachments/1186683768640122982/'  .
-                            '1187035817877708841/371521463_2619947881488781_' .
-                            '2593667617711553075_n.jpg?ex=65cccb41&is=65ba5641&hm=' .
-                            '56ba502d8bfbbd399fdba3d0851f8e4872c486b5637f5167343c3ca879eba5f5&',
+        'avatar_image' => 'https://i.postimg.cc/mrBFCfTn/hazard.jpg',
     ],
     [
         'firstName' => 'Ricky',

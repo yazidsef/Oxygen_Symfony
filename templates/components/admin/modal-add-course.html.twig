@@ -1,0 +1,77 @@
+<div id="add-course" class="modal">
+    <div class="modal-content">
+        <h2>Create a new course</h2>
+        <a class="close" href="#">&times;</a>
+        <form id="create-course-form" method="post" action="/admin/formation">
+            {{ form_start(form) }}
+            <div class="course__details">
+                <div class="input__box">
+                    <span class="details">Name</span>
+                    <input id="name-course" name="{{ field_name(form.name) }}" type="text" placeholder="E.g: Dev Php" required>
+                </div>
+                <div class="input__box">
+                    <span class="details">Location</span>
+                    <input id="location" name="{{ field_name(form.location) }}" type="text" placeholder="E.g: Paris" required>
+                </div>
+                <div class="input__box">
+                    <span class="details">Capacity</span>
+                    <input id="capacity" name="{{ field_name(form.capacity) }}" type="number" placeholder="E.g: 10-100" required>
+                </div>
+                <div class="input__box">
+                    <span class="details">Start Date</span>
+                    <input id="date" name="{{ field_name(form.date) }}" type="date" required>
+                </div>
+                <div class="input__box">
+                    <span class="details">Duration</span>
+                    <select name="{{ field_name(form.duration) }}" id="duration">
+                        <option value="1 mois">1 mois</option>
+                        <option value="3 mois">3 mois</option>
+                        <option value="5 mois">5 mois</option>
+                        <option value="5 mois">6 mois</option>
+                        <option value="8 mois">8 mois</option>
+                        <option value="12 mois">12 mois</option>
+                    </select>
+                </div>
+                <div class="input__box">
+                    <span class="details">Degree required</span>
+                    <select name="{{ field_name(form.degree) }}" id="degree">
+                        <option value="Bachelor">Bac</option>
+                        <option value="Bac +2">Bac +2</option>
+                        <option value="Bac +3">Bac +3</option>
+                        <option value="Bac +5">Bac +5</option>
+                    </select>
+                </div>
+                <div class="input__box">
+                    <span class="details">Disciplines</span>
+                    {{ form_widget(form.discipline) }}
+                </div>
+                <div class="input__box">
+                    <span class="details">Support</span>
+                    <div class="category">
+                        <label>
+                            <input type="radio" name="{{ field_name(form.financingSupport) }}" value="100">
+                            <span>100%</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="{{ field_name(form.financingSupport) }}" value="0">
+                            <span>Not include</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="course__description">
+                <div class="input__box">
+                    <span id="courseImg" class="details">Image</span>
+                    <img id="preview-image" src="https://placehold.jp/100x100.png" alt="">
+                    <input type="text" id="image-url-input" name="{{ field_name(form.urlImage) }}" placeholder="Insert Image URL" oninput="updateImage(this.value, 'add-course')" required>
+                </div>
+                <div class="input__box">
+                    <span class="details">Description</span>
+                    <textarea id="courseDes" name="{{ field_name(form.description) }}" placeholder="E.g: This course is about..." required></textarea>
+                </div>
+            </div>
+            <button class="btn-course" type="submit">Create Course</button>
+            {{ form_end(form) }}
+        </form>
+    </div>
+</div>

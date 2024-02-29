@@ -32,9 +32,15 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('home', './assets/home.js')
     .addEntry('contact', './assets/contact.js')
     .addEntry('formation', './assets/formation.js')
     .addEntry('discipline', './assets/discipline.js')
+    .addEntry('adminHome', './assets/adminHome.js')
+    .addEntry('adminCourse', './assets/adminCourse.js')
+    .addEntry('adminStudent', './assets/adminStudent.js')
+    .addEntry('adminApplication', './assets/adminApplication.js')
+    .addEntry('adminContact', './assets/adminContact.js')
 
 
 

@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ApplicationRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ApplicationRepository::class)]
@@ -16,18 +14,32 @@ class Application
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'applications')]
+    #[ORM\JoinColumn(name: 'course_id', referencedColumnName: 'id')]
     private ?Course $course = null;
 
-    #[ORM\ManyToMany(targetEntity: Student::class, inversedBy: 'applications')]
-    private Collection $students;
+    #[ORM\Column(length: 150)]
+    private ?string $firstName = null;
+
+    #[ORM\Column(length: 150)]
+    private ?string $lastName = null;
+
+    #[ORM\Column(type: 'integer', length: 20)]
+    private ?int $tel = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $status = null;
+    private ?string $email = null;
 
-    public function __construct()
-    {
-        $this->students = new ArrayCollection();
-    }
+    #[ORM\Column(length: 150)]
+    private ?string $degree = null;
+
+    #[ORM\Column(type: 'integer')]
+    private ?int $age = null;
+
+    #[ORM\Column(type: 'text')]
+    private ?string $message = null;
+
+    #[ORM\Column(length: 150)]
+    private ?string $status = null;
 
     public function getId(): ?int
     {
@@ -46,26 +58,86 @@ class Application
         return $this;
     }
 
-    /**
-     * @return Collection<int, Student>
-     */
-    public function getStudents(): Collection
+    public function getFirstName(): ?string
     {
-        return $this->students;
+        return $this->firstName;
     }
 
-    public function addStudent(Student $student): static
+    public function setFirstName(string $firstName): static
     {
-        if (!$this->students->contains($student)) {
-            $this->students->add($student);
-        }
+        $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function removeStudent(Student $student): static
+    public function getLastName(): ?string
     {
-        $this->students->removeElement($student);
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): static
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getTel(): ?int
+    {
+        return $this->tel;
+    }
+
+    public function setTel(int $tel): static
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getDegree(): ?string
+    {
+        return $this->degree;
+    }
+
+    public function setDegree(string $degree): static
+    {
+        $this->degree = $degree;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(int $age): static
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message): static
+    {
+        $this->message = $message;
 
         return $this;
     }
