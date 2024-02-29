@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %}Oxygen: Admin{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('adminContact') }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('adminContact') }}
+{% endblock %}
+{% block body %}
+    <section class="main-admin">
+        <div class="main-das">
+            {% include 'components/admin/nav-das.html.twig' %}
+            <div class="course-container">
+                <div class="course-header">
+                    <h1>Nouveau Messages</h1>
+                    <h2>Total: {{ totalContacts }}</h2>
+                </div>
+                <div class="course-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for contact in contacts %}
+                                <tr>
+                                    <td><img src="{{ contact.avatarImage }}" alt="{{ contact.contact.firstName }}" width="100"></td>
+                                    <td>{{ contact.contact.firstName}}</td>
+                                    <td>{{ contact.contact.lastName }}</td>
+                                    <td>{{ contact.contact.email }}</td>
+                                    <td>{{ contact.contact.phone }}</td>
+                                    <td>{{ contact.contact.message }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
